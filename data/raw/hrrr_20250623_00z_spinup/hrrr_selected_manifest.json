@@ -1,0 +1,2105 @@
+{
+  "created_utc": "2026-07-28T03:13:52.580545+00:00",
+  "method": "NOAA HRRR AWS byte-range extraction using GRIB2 index files",
+  "date": "20250623",
+  "cycle_utc": 0,
+  "start_forecast_hour": 4,
+  "forecast_hours": 14,
+  "base_url": "https://noaa-hrrr-bdp-pds.s3.amazonaws.com",
+  "selection": {
+    "surface": [
+      "UGRD:10 m above ground",
+      "VGRD:10 m above ground",
+      "TMP:2 m above ground",
+      "RH:2 m above ground",
+      "PRES:surface",
+      "HPBL:surface",
+      "PRATE:surface",
+      "TCDC:entire atmosphere"
+    ],
+    "upper_air_levels": [
+      "1000 mb",
+      "925 mb",
+      "850 mb",
+      "700 mb",
+      "500 mb"
+    ],
+    "terrain": "HGT:surface from forecast hour 0"
+  },
+  "dry_run": false,
+  "files": [
+    {
+      "output_hour_index": 0,
+      "forecast_hour": 4,
+      "filename": "hrrr.t00z.wrfsfcf04.grib2",
+      "source_url": "https://noaa-hrrr-bdp-pds.s3.amazonaws.com/hrrr.20250623/conus/hrrr.t00z.wrfsfcf04.grib2",
+      "index_path": "data\\raw\\hrrr_20250623_00z_spinup\\hrrr.t00z.wrfsfcf04.grib2.idx",
+      "source_size_bytes": 144248017,
+      "selected_messages": [
+        {
+          "line": "14:7927017:d=2025062300:HGT:500 mb:4 hour fcst:",
+          "offset": 7927017,
+          "description": "HGT:500 mb"
+        },
+        {
+          "line": "15:8645968:d=2025062300:TMP:500 mb:4 hour fcst:",
+          "offset": 8645968,
+          "description": "TMP:500 mb"
+        },
+        {
+          "line": "17:10292700:d=2025062300:UGRD:500 mb:4 hour fcst:",
+          "offset": 10292700,
+          "description": "UGRD:500 mb"
+        },
+        {
+          "line": "18:10892696:d=2025062300:VGRD:500 mb:4 hour fcst:",
+          "offset": 10892696,
+          "description": "VGRD:500 mb"
+        },
+        {
+          "line": "19:11489471:d=2025062300:HGT:700 mb:4 hour fcst:",
+          "offset": 11489471,
+          "description": "HGT:700 mb"
+        },
+        {
+          "line": "20:12200278:d=2025062300:TMP:700 mb:4 hour fcst:",
+          "offset": 12200278,
+          "description": "TMP:700 mb"
+        },
+        {
+          "line": "23:14773779:d=2025062300:UGRD:700 mb:4 hour fcst:",
+          "offset": 14773779,
+          "description": "UGRD:700 mb"
+        },
+        {
+          "line": "24:15388564:d=2025062300:VGRD:700 mb:4 hour fcst:",
+          "offset": 15388564,
+          "description": "VGRD:700 mb"
+        },
+        {
+          "line": "25:16009377:d=2025062300:HGT:850 mb:4 hour fcst:",
+          "offset": 16009377,
+          "description": "HGT:850 mb"
+        },
+        {
+          "line": "26:16743980:d=2025062300:TMP:850 mb:4 hour fcst:",
+          "offset": 16743980,
+          "description": "TMP:850 mb"
+        },
+        {
+          "line": "28:18489756:d=2025062300:UGRD:850 mb:4 hour fcst:",
+          "offset": 18489756,
+          "description": "UGRD:850 mb"
+        },
+        {
+          "line": "29:19118585:d=2025062300:VGRD:850 mb:4 hour fcst:",
+          "offset": 19118585,
+          "description": "VGRD:850 mb"
+        },
+        {
+          "line": "30:19754794:d=2025062300:TMP:925 mb:4 hour fcst:",
+          "offset": 19754794,
+          "description": "TMP:925 mb"
+        },
+        {
+          "line": "32:21485939:d=2025062300:UGRD:925 mb:4 hour fcst:",
+          "offset": 21485939,
+          "description": "UGRD:925 mb"
+        },
+        {
+          "line": "33:22118321:d=2025062300:VGRD:925 mb:4 hour fcst:",
+          "offset": 22118321,
+          "description": "VGRD:925 mb"
+        },
+        {
+          "line": "34:22753715:d=2025062300:TMP:1000 mb:4 hour fcst:",
+          "offset": 22753715,
+          "description": "TMP:1000 mb"
+        },
+        {
+          "line": "36:24463408:d=2025062300:UGRD:1000 mb:4 hour fcst:",
+          "offset": 24463408,
+          "description": "UGRD:1000 mb"
+        },
+        {
+          "line": "37:25094905:d=2025062300:VGRD:1000 mb:4 hour fcst:",
+          "offset": 25094905,
+          "description": "VGRD:1000 mb"
+        },
+        {
+          "line": "42:28449143:d=2025062300:HGT:1000 mb:4 hour fcst:",
+          "offset": 28449143,
+          "description": "HGT:1000 mb"
+        },
+        {
+          "line": "62:36992308:d=2025062300:PRES:surface:4 hour fcst:",
+          "offset": 36992308,
+          "description": "PRES:surface"
+        },
+        {
+          "line": "71:43574721:d=2025062300:TMP:2 m above ground:4 hour fcst:",
+          "offset": 43574721,
+          "description": "TMP:2 m above ground"
+        },
+        {
+          "line": "75:48589440:d=2025062300:RH:2 m above ground:4 hour fcst:",
+          "offset": 48589440,
+          "description": "RH:2 m above ground"
+        },
+        {
+          "line": "77:50667974:d=2025062300:UGRD:10 m above ground:4 hour fcst:",
+          "offset": 50667974,
+          "description": "UGRD:10 m above ground"
+        },
+        {
+          "line": "78:53049589:d=2025062300:VGRD:10 m above ground:4 hour fcst:",
+          "offset": 53049589,
+          "description": "VGRD:10 m above ground"
+        },
+        {
+          "line": "83:59459484:d=2025062300:PRATE:surface:4 hour fcst:",
+          "offset": 59459484,
+          "description": "PRATE:surface"
+        },
+        {
+          "line": "119:79242316:d=2025062300:TCDC:entire atmosphere:4 hour fcst:",
+          "offset": 79242316,
+          "description": "TCDC:entire atmosphere"
+        },
+        {
+          "line": "153:115406857:d=2025062300:HPBL:surface:4 hour fcst:",
+          "offset": 115406857,
+          "description": "HPBL:surface"
+        }
+      ],
+      "subset_path": "data\\raw\\hrrr_20250623_00z_spinup\\hrrr.t00z.wrfsfcf04.grib2.selected.grib2",
+      "subset_size_bytes": 24817832,
+      "subset_sha256": "030f4b3d248a5ca1a1091198b39eeb96f36b14dab0faaa5c41115a5b1ff75881"
+    },
+    {
+      "output_hour_index": 1,
+      "forecast_hour": 5,
+      "filename": "hrrr.t00z.wrfsfcf05.grib2",
+      "source_url": "https://noaa-hrrr-bdp-pds.s3.amazonaws.com/hrrr.20250623/conus/hrrr.t00z.wrfsfcf05.grib2",
+      "index_path": "data\\raw\\hrrr_20250623_00z_spinup\\hrrr.t00z.wrfsfcf05.grib2.idx",
+      "source_size_bytes": 146955694,
+      "selected_messages": [
+        {
+          "line": "14:7993622:d=2025062300:HGT:500 mb:5 hour fcst:",
+          "offset": 7993622,
+          "description": "HGT:500 mb"
+        },
+        {
+          "line": "15:8708599:d=2025062300:TMP:500 mb:5 hour fcst:",
+          "offset": 8708599,
+          "description": "TMP:500 mb"
+        },
+        {
+          "line": "17:10358051:d=2025062300:UGRD:500 mb:5 hour fcst:",
+          "offset": 10358051,
+          "description": "UGRD:500 mb"
+        },
+        {
+          "line": "18:10956082:d=2025062300:VGRD:500 mb:5 hour fcst:",
+          "offset": 10956082,
+          "description": "VGRD:500 mb"
+        },
+        {
+          "line": "19:11552940:d=2025062300:HGT:700 mb:5 hour fcst:",
+          "offset": 11552940,
+          "description": "HGT:700 mb"
+        },
+        {
+          "line": "20:12258050:d=2025062300:TMP:700 mb:5 hour fcst:",
+          "offset": 12258050,
+          "description": "TMP:700 mb"
+        },
+        {
+          "line": "23:14850304:d=2025062300:UGRD:700 mb:5 hour fcst:",
+          "offset": 14850304,
+          "description": "UGRD:700 mb"
+        },
+        {
+          "line": "24:15464221:d=2025062300:VGRD:700 mb:5 hour fcst:",
+          "offset": 15464221,
+          "description": "VGRD:700 mb"
+        },
+        {
+          "line": "25:16087181:d=2025062300:HGT:850 mb:5 hour fcst:",
+          "offset": 16087181,
+          "description": "HGT:850 mb"
+        },
+        {
+          "line": "26:16819067:d=2025062300:TMP:850 mb:5 hour fcst:",
+          "offset": 16819067,
+          "description": "TMP:850 mb"
+        },
+        {
+          "line": "28:18567781:d=2025062300:UGRD:850 mb:5 hour fcst:",
+          "offset": 18567781,
+          "description": "UGRD:850 mb"
+        },
+        {
+          "line": "29:19197172:d=2025062300:VGRD:850 mb:5 hour fcst:",
+          "offset": 19197172,
+          "description": "VGRD:850 mb"
+        },
+        {
+          "line": "30:19833209:d=2025062300:TMP:925 mb:5 hour fcst:",
+          "offset": 19833209,
+          "description": "TMP:925 mb"
+        },
+        {
+          "line": "32:21549191:d=2025062300:UGRD:925 mb:5 hour fcst:",
+          "offset": 21549191,
+          "description": "UGRD:925 mb"
+        },
+        {
+          "line": "33:22193334:d=2025062300:VGRD:925 mb:5 hour fcst:",
+          "offset": 22193334,
+          "description": "VGRD:925 mb"
+        },
+        {
+          "line": "34:22829853:d=2025062300:TMP:1000 mb:5 hour fcst:",
+          "offset": 22829853,
+          "description": "TMP:1000 mb"
+        },
+        {
+          "line": "36:24540144:d=2025062300:UGRD:1000 mb:5 hour fcst:",
+          "offset": 24540144,
+          "description": "UGRD:1000 mb"
+        },
+        {
+          "line": "37:25175351:d=2025062300:VGRD:1000 mb:5 hour fcst:",
+          "offset": 25175351,
+          "description": "VGRD:1000 mb"
+        },
+        {
+          "line": "42:28582852:d=2025062300:HGT:1000 mb:5 hour fcst:",
+          "offset": 28582852,
+          "description": "HGT:1000 mb"
+        },
+        {
+          "line": "62:38208399:d=2025062300:PRES:surface:5 hour fcst:",
+          "offset": 38208399,
+          "description": "PRES:surface"
+        },
+        {
+          "line": "71:44788148:d=2025062300:TMP:2 m above ground:5 hour fcst:",
+          "offset": 44788148,
+          "description": "TMP:2 m above ground"
+        },
+        {
+          "line": "75:49826431:d=2025062300:RH:2 m above ground:5 hour fcst:",
+          "offset": 49826431,
+          "description": "RH:2 m above ground"
+        },
+        {
+          "line": "77:52066702:d=2025062300:UGRD:10 m above ground:5 hour fcst:",
+          "offset": 52066702,
+          "description": "UGRD:10 m above ground"
+        },
+        {
+          "line": "78:54448317:d=2025062300:VGRD:10 m above ground:5 hour fcst:",
+          "offset": 54448317,
+          "description": "VGRD:10 m above ground"
+        },
+        {
+          "line": "83:60929230:d=2025062300:PRATE:surface:5 hour fcst:",
+          "offset": 60929230,
+          "description": "PRATE:surface"
+        },
+        {
+          "line": "119:81446584:d=2025062300:TCDC:entire atmosphere:5 hour fcst:",
+          "offset": 81446584,
+          "description": "TCDC:entire atmosphere"
+        },
+        {
+          "line": "153:117963896:d=2025062300:HPBL:surface:5 hour fcst:",
+          "offset": 117963896,
+          "description": "HPBL:surface"
+        }
+      ],
+      "subset_path": "data\\raw\\hrrr_20250623_00z_spinup\\hrrr.t00z.wrfsfcf05.grib2.selected.grib2",
+      "subset_size_bytes": 24802191,
+      "subset_sha256": "95fa94472ab1f9d7ea06d610cc95a80256c99af3c486016dfd6d13cbd98bdda6"
+    },
+    {
+      "output_hour_index": 2,
+      "forecast_hour": 6,
+      "filename": "hrrr.t00z.wrfsfcf06.grib2",
+      "source_url": "https://noaa-hrrr-bdp-pds.s3.amazonaws.com/hrrr.20250623/conus/hrrr.t00z.wrfsfcf06.grib2",
+      "index_path": "data\\raw\\hrrr_20250623_00z_spinup\\hrrr.t00z.wrfsfcf06.grib2.idx",
+      "source_size_bytes": 148140415,
+      "selected_messages": [
+        {
+          "line": "14:8066526:d=2025062300:HGT:500 mb:6 hour fcst:",
+          "offset": 8066526,
+          "description": "HGT:500 mb"
+        },
+        {
+          "line": "15:8780401:d=2025062300:TMP:500 mb:6 hour fcst:",
+          "offset": 8780401,
+          "description": "TMP:500 mb"
+        },
+        {
+          "line": "17:10430311:d=2025062300:UGRD:500 mb:6 hour fcst:",
+          "offset": 10430311,
+          "description": "UGRD:500 mb"
+        },
+        {
+          "line": "18:11027425:d=2025062300:VGRD:500 mb:6 hour fcst:",
+          "offset": 11027425,
+          "description": "VGRD:500 mb"
+        },
+        {
+          "line": "19:11623934:d=2025062300:HGT:700 mb:6 hour fcst:",
+          "offset": 11623934,
+          "description": "HGT:700 mb"
+        },
+        {
+          "line": "20:12326485:d=2025062300:TMP:700 mb:6 hour fcst:",
+          "offset": 12326485,
+          "description": "TMP:700 mb"
+        },
+        {
+          "line": "23:14936565:d=2025062300:UGRD:700 mb:6 hour fcst:",
+          "offset": 14936565,
+          "description": "UGRD:700 mb"
+        },
+        {
+          "line": "24:15549664:d=2025062300:VGRD:700 mb:6 hour fcst:",
+          "offset": 15549664,
+          "description": "VGRD:700 mb"
+        },
+        {
+          "line": "25:16171709:d=2025062300:HGT:850 mb:6 hour fcst:",
+          "offset": 16171709,
+          "description": "HGT:850 mb"
+        },
+        {
+          "line": "26:16903461:d=2025062300:TMP:850 mb:6 hour fcst:",
+          "offset": 16903461,
+          "description": "TMP:850 mb"
+        },
+        {
+          "line": "28:18660642:d=2025062300:UGRD:850 mb:6 hour fcst:",
+          "offset": 18660642,
+          "description": "UGRD:850 mb"
+        },
+        {
+          "line": "29:19299619:d=2025062300:VGRD:850 mb:6 hour fcst:",
+          "offset": 19299619,
+          "description": "VGRD:850 mb"
+        },
+        {
+          "line": "30:19935840:d=2025062300:TMP:925 mb:6 hour fcst:",
+          "offset": 19935840,
+          "description": "TMP:925 mb"
+        },
+        {
+          "line": "32:21670126:d=2025062300:UGRD:925 mb:6 hour fcst:",
+          "offset": 21670126,
+          "description": "UGRD:925 mb"
+        },
+        {
+          "line": "33:22306483:d=2025062300:VGRD:925 mb:6 hour fcst:",
+          "offset": 22306483,
+          "description": "VGRD:925 mb"
+        },
+        {
+          "line": "34:22944145:d=2025062300:TMP:1000 mb:6 hour fcst:",
+          "offset": 22944145,
+          "description": "TMP:1000 mb"
+        },
+        {
+          "line": "36:24661296:d=2025062300:UGRD:1000 mb:6 hour fcst:",
+          "offset": 24661296,
+          "description": "UGRD:1000 mb"
+        },
+        {
+          "line": "37:25300018:d=2025062300:VGRD:1000 mb:6 hour fcst:",
+          "offset": 25300018,
+          "description": "VGRD:1000 mb"
+        },
+        {
+          "line": "42:28654953:d=2025062300:HGT:1000 mb:6 hour fcst:",
+          "offset": 28654953,
+          "description": "HGT:1000 mb"
+        },
+        {
+          "line": "62:38531772:d=2025062300:PRES:surface:6 hour fcst:",
+          "offset": 38531772,
+          "description": "PRES:surface"
+        },
+        {
+          "line": "71:45110017:d=2025062300:TMP:2 m above ground:6 hour fcst:",
+          "offset": 45110017,
+          "description": "TMP:2 m above ground"
+        },
+        {
+          "line": "75:50174755:d=2025062300:RH:2 m above ground:6 hour fcst:",
+          "offset": 50174755,
+          "description": "RH:2 m above ground"
+        },
+        {
+          "line": "77:52425081:d=2025062300:UGRD:10 m above ground:6 hour fcst:",
+          "offset": 52425081,
+          "description": "UGRD:10 m above ground"
+        },
+        {
+          "line": "78:54806696:d=2025062300:VGRD:10 m above ground:6 hour fcst:",
+          "offset": 54806696,
+          "description": "VGRD:10 m above ground"
+        },
+        {
+          "line": "83:61345630:d=2025062300:PRATE:surface:6 hour fcst:",
+          "offset": 61345630,
+          "description": "PRATE:surface"
+        },
+        {
+          "line": "119:82215665:d=2025062300:TCDC:entire atmosphere:6 hour fcst:",
+          "offset": 82215665,
+          "description": "TCDC:entire atmosphere"
+        },
+        {
+          "line": "153:119069387:d=2025062300:HPBL:surface:6 hour fcst:",
+          "offset": 119069387,
+          "description": "HPBL:surface"
+        }
+      ],
+      "subset_path": "data\\raw\\hrrr_20250623_00z_spinup\\hrrr.t00z.wrfsfcf06.grib2.selected.grib2",
+      "subset_size_bytes": 24821683,
+      "subset_sha256": "71599e380ef2777b27f4cb8eaa1f77c1adb0451704f55fbce6a589efb491e8fc"
+    },
+    {
+      "output_hour_index": 3,
+      "forecast_hour": 7,
+      "filename": "hrrr.t00z.wrfsfcf07.grib2",
+      "source_url": "https://noaa-hrrr-bdp-pds.s3.amazonaws.com/hrrr.20250623/conus/hrrr.t00z.wrfsfcf07.grib2",
+      "index_path": "data\\raw\\hrrr_20250623_00z_spinup\\hrrr.t00z.wrfsfcf07.grib2.idx",
+      "source_size_bytes": 150592999,
+      "selected_messages": [
+        {
+          "line": "14:8055524:d=2025062300:HGT:500 mb:7 hour fcst:",
+          "offset": 8055524,
+          "description": "HGT:500 mb"
+        },
+        {
+          "line": "15:8768021:d=2025062300:TMP:500 mb:7 hour fcst:",
+          "offset": 8768021,
+          "description": "TMP:500 mb"
+        },
+        {
+          "line": "17:10418251:d=2025062300:UGRD:500 mb:7 hour fcst:",
+          "offset": 10418251,
+          "description": "UGRD:500 mb"
+        },
+        {
+          "line": "18:11015051:d=2025062300:VGRD:500 mb:7 hour fcst:",
+          "offset": 11015051,
+          "description": "VGRD:500 mb"
+        },
+        {
+          "line": "19:11610723:d=2025062300:HGT:700 mb:7 hour fcst:",
+          "offset": 11610723,
+          "description": "HGT:700 mb"
+        },
+        {
+          "line": "20:12308071:d=2025062300:TMP:700 mb:7 hour fcst:",
+          "offset": 12308071,
+          "description": "TMP:700 mb"
+        },
+        {
+          "line": "23:14905638:d=2025062300:UGRD:700 mb:7 hour fcst:",
+          "offset": 14905638,
+          "description": "UGRD:700 mb"
+        },
+        {
+          "line": "24:15517680:d=2025062300:VGRD:700 mb:7 hour fcst:",
+          "offset": 15517680,
+          "description": "VGRD:700 mb"
+        },
+        {
+          "line": "25:16136897:d=2025062300:HGT:850 mb:7 hour fcst:",
+          "offset": 16136897,
+          "description": "HGT:850 mb"
+        },
+        {
+          "line": "26:16866051:d=2025062300:TMP:850 mb:7 hour fcst:",
+          "offset": 16866051,
+          "description": "TMP:850 mb"
+        },
+        {
+          "line": "28:18628233:d=2025062300:UGRD:850 mb:7 hour fcst:",
+          "offset": 18628233,
+          "description": "UGRD:850 mb"
+        },
+        {
+          "line": "29:19265285:d=2025062300:VGRD:850 mb:7 hour fcst:",
+          "offset": 19265285,
+          "description": "VGRD:850 mb"
+        },
+        {
+          "line": "30:19901696:d=2025062300:TMP:925 mb:7 hour fcst:",
+          "offset": 19901696,
+          "description": "TMP:925 mb"
+        },
+        {
+          "line": "32:21641569:d=2025062300:UGRD:925 mb:7 hour fcst:",
+          "offset": 21641569,
+          "description": "UGRD:925 mb"
+        },
+        {
+          "line": "33:22276070:d=2025062300:VGRD:925 mb:7 hour fcst:",
+          "offset": 22276070,
+          "description": "VGRD:925 mb"
+        },
+        {
+          "line": "34:22912843:d=2025062300:TMP:1000 mb:7 hour fcst:",
+          "offset": 22912843,
+          "description": "TMP:1000 mb"
+        },
+        {
+          "line": "36:24633237:d=2025062300:UGRD:1000 mb:7 hour fcst:",
+          "offset": 24633237,
+          "description": "UGRD:1000 mb"
+        },
+        {
+          "line": "37:25272151:d=2025062300:VGRD:1000 mb:7 hour fcst:",
+          "offset": 25272151,
+          "description": "VGRD:1000 mb"
+        },
+        {
+          "line": "42:28636805:d=2025062300:HGT:1000 mb:7 hour fcst:",
+          "offset": 28636805,
+          "description": "HGT:1000 mb"
+        },
+        {
+          "line": "62:38463572:d=2025062300:PRES:surface:7 hour fcst:",
+          "offset": 38463572,
+          "description": "PRES:surface"
+        },
+        {
+          "line": "71:45043502:d=2025062300:TMP:2 m above ground:7 hour fcst:",
+          "offset": 45043502,
+          "description": "TMP:2 m above ground"
+        },
+        {
+          "line": "75:50147036:d=2025062300:RH:2 m above ground:7 hour fcst:",
+          "offset": 50147036,
+          "description": "RH:2 m above ground"
+        },
+        {
+          "line": "77:52416183:d=2025062300:UGRD:10 m above ground:7 hour fcst:",
+          "offset": 52416183,
+          "description": "UGRD:10 m above ground"
+        },
+        {
+          "line": "78:54797798:d=2025062300:VGRD:10 m above ground:7 hour fcst:",
+          "offset": 54797798,
+          "description": "VGRD:10 m above ground"
+        },
+        {
+          "line": "83:61373262:d=2025062300:PRATE:surface:7 hour fcst:",
+          "offset": 61373262,
+          "description": "PRATE:surface"
+        },
+        {
+          "line": "119:83023378:d=2025062300:TCDC:entire atmosphere:7 hour fcst:",
+          "offset": 83023378,
+          "description": "TCDC:entire atmosphere"
+        },
+        {
+          "line": "153:120912142:d=2025062300:HPBL:surface:7 hour fcst:",
+          "offset": 120912142,
+          "description": "HPBL:surface"
+        }
+      ],
+      "subset_path": "data\\raw\\hrrr_20250623_00z_spinup\\hrrr.t00z.wrfsfcf07.grib2.selected.grib2",
+      "subset_size_bytes": 24834522,
+      "subset_sha256": "4235964bce48b90fc8f34b8ec058eb99c6359559edcc39dd3284b277f18a0322"
+    },
+    {
+      "output_hour_index": 4,
+      "forecast_hour": 8,
+      "filename": "hrrr.t00z.wrfsfcf08.grib2",
+      "source_url": "https://noaa-hrrr-bdp-pds.s3.amazonaws.com/hrrr.20250623/conus/hrrr.t00z.wrfsfcf08.grib2",
+      "index_path": "data\\raw\\hrrr_20250623_00z_spinup\\hrrr.t00z.wrfsfcf08.grib2.idx",
+      "source_size_bytes": 151267683,
+      "selected_messages": [
+        {
+          "line": "14:8021101:d=2025062300:HGT:500 mb:8 hour fcst:",
+          "offset": 8021101,
+          "description": "HGT:500 mb"
+        },
+        {
+          "line": "15:8731647:d=2025062300:TMP:500 mb:8 hour fcst:",
+          "offset": 8731647,
+          "description": "TMP:500 mb"
+        },
+        {
+          "line": "17:10381088:d=2025062300:UGRD:500 mb:8 hour fcst:",
+          "offset": 10381088,
+          "description": "UGRD:500 mb"
+        },
+        {
+          "line": "18:10977246:d=2025062300:VGRD:500 mb:8 hour fcst:",
+          "offset": 10977246,
+          "description": "VGRD:500 mb"
+        },
+        {
+          "line": "19:11572402:d=2025062300:HGT:700 mb:8 hour fcst:",
+          "offset": 11572402,
+          "description": "HGT:700 mb"
+        },
+        {
+          "line": "20:12266457:d=2025062300:TMP:700 mb:8 hour fcst:",
+          "offset": 12266457,
+          "description": "TMP:700 mb"
+        },
+        {
+          "line": "23:14880137:d=2025062300:UGRD:700 mb:8 hour fcst:",
+          "offset": 14880137,
+          "description": "UGRD:700 mb"
+        },
+        {
+          "line": "24:15490671:d=2025062300:VGRD:700 mb:8 hour fcst:",
+          "offset": 15490671,
+          "description": "VGRD:700 mb"
+        },
+        {
+          "line": "25:16100058:d=2025062300:HGT:850 mb:8 hour fcst:",
+          "offset": 16100058,
+          "description": "HGT:850 mb"
+        },
+        {
+          "line": "26:16824872:d=2025062300:TMP:850 mb:8 hour fcst:",
+          "offset": 16824872,
+          "description": "TMP:850 mb"
+        },
+        {
+          "line": "28:18591279:d=2025062300:UGRD:850 mb:8 hour fcst:",
+          "offset": 18591279,
+          "description": "UGRD:850 mb"
+        },
+        {
+          "line": "29:19227039:d=2025062300:VGRD:850 mb:8 hour fcst:",
+          "offset": 19227039,
+          "description": "VGRD:850 mb"
+        },
+        {
+          "line": "30:19861215:d=2025062300:TMP:925 mb:8 hour fcst:",
+          "offset": 19861215,
+          "description": "TMP:925 mb"
+        },
+        {
+          "line": "32:21607332:d=2025062300:UGRD:925 mb:8 hour fcst:",
+          "offset": 21607332,
+          "description": "UGRD:925 mb"
+        },
+        {
+          "line": "33:22241720:d=2025062300:VGRD:925 mb:8 hour fcst:",
+          "offset": 22241720,
+          "description": "VGRD:925 mb"
+        },
+        {
+          "line": "34:22878294:d=2025062300:TMP:1000 mb:8 hour fcst:",
+          "offset": 22878294,
+          "description": "TMP:1000 mb"
+        },
+        {
+          "line": "36:24604119:d=2025062300:UGRD:1000 mb:8 hour fcst:",
+          "offset": 24604119,
+          "description": "UGRD:1000 mb"
+        },
+        {
+          "line": "37:25242596:d=2025062300:VGRD:1000 mb:8 hour fcst:",
+          "offset": 25242596,
+          "description": "VGRD:1000 mb"
+        },
+        {
+          "line": "42:28645908:d=2025062300:HGT:1000 mb:8 hour fcst:",
+          "offset": 28645908,
+          "description": "HGT:1000 mb"
+        },
+        {
+          "line": "62:38877923:d=2025062300:PRES:surface:8 hour fcst:",
+          "offset": 38877923,
+          "description": "PRES:surface"
+        },
+        {
+          "line": "71:45466674:d=2025062300:TMP:2 m above ground:8 hour fcst:",
+          "offset": 45466674,
+          "description": "TMP:2 m above ground"
+        },
+        {
+          "line": "75:50619059:d=2025062300:RH:2 m above ground:8 hour fcst:",
+          "offset": 50619059,
+          "description": "RH:2 m above ground"
+        },
+        {
+          "line": "77:52922267:d=2025062300:UGRD:10 m above ground:8 hour fcst:",
+          "offset": 52922267,
+          "description": "UGRD:10 m above ground"
+        },
+        {
+          "line": "78:55065739:d=2025062300:VGRD:10 m above ground:8 hour fcst:",
+          "offset": 55065739,
+          "description": "VGRD:10 m above ground"
+        },
+        {
+          "line": "83:61442394:d=2025062300:PRATE:surface:8 hour fcst:",
+          "offset": 61442394,
+          "description": "PRATE:surface"
+        },
+        {
+          "line": "119:83105868:d=2025062300:TCDC:entire atmosphere:8 hour fcst:",
+          "offset": 83105868,
+          "description": "TCDC:entire atmosphere"
+        },
+        {
+          "line": "153:121166067:d=2025062300:HPBL:surface:8 hour fcst:",
+          "offset": 121166067,
+          "description": "HPBL:surface"
+        }
+      ],
+      "subset_path": "data\\raw\\hrrr_20250623_00z_spinup\\hrrr.t00z.wrfsfcf08.grib2.selected.grib2",
+      "subset_size_bytes": 24417299,
+      "subset_sha256": "d1c85030aa81caeec6e61db940ec81515fdf49eada6972df3133201486491f83"
+    },
+    {
+      "output_hour_index": 5,
+      "forecast_hour": 9,
+      "filename": "hrrr.t00z.wrfsfcf09.grib2",
+      "source_url": "https://noaa-hrrr-bdp-pds.s3.amazonaws.com/hrrr.20250623/conus/hrrr.t00z.wrfsfcf09.grib2",
+      "index_path": "data\\raw\\hrrr_20250623_00z_spinup\\hrrr.t00z.wrfsfcf09.grib2.idx",
+      "source_size_bytes": 150516014,
+      "selected_messages": [
+        {
+          "line": "14:8025384:d=2025062300:HGT:500 mb:9 hour fcst:",
+          "offset": 8025384,
+          "description": "HGT:500 mb"
+        },
+        {
+          "line": "15:8735189:d=2025062300:TMP:500 mb:9 hour fcst:",
+          "offset": 8735189,
+          "description": "TMP:500 mb"
+        },
+        {
+          "line": "17:10387923:d=2025062300:UGRD:500 mb:9 hour fcst:",
+          "offset": 10387923,
+          "description": "UGRD:500 mb"
+        },
+        {
+          "line": "18:10982253:d=2025062300:VGRD:500 mb:9 hour fcst:",
+          "offset": 10982253,
+          "description": "VGRD:500 mb"
+        },
+        {
+          "line": "19:11575920:d=2025062300:HGT:700 mb:9 hour fcst:",
+          "offset": 11575920,
+          "description": "HGT:700 mb"
+        },
+        {
+          "line": "20:12266285:d=2025062300:TMP:700 mb:9 hour fcst:",
+          "offset": 12266285,
+          "description": "TMP:700 mb"
+        },
+        {
+          "line": "23:14881139:d=2025062300:UGRD:700 mb:9 hour fcst:",
+          "offset": 14881139,
+          "description": "UGRD:700 mb"
+        },
+        {
+          "line": "24:15490305:d=2025062300:VGRD:700 mb:9 hour fcst:",
+          "offset": 15490305,
+          "description": "VGRD:700 mb"
+        },
+        {
+          "line": "25:16098264:d=2025062300:HGT:850 mb:9 hour fcst:",
+          "offset": 16098264,
+          "description": "HGT:850 mb"
+        },
+        {
+          "line": "26:16819773:d=2025062300:TMP:850 mb:9 hour fcst:",
+          "offset": 16819773,
+          "description": "TMP:850 mb"
+        },
+        {
+          "line": "28:18594461:d=2025062300:UGRD:850 mb:9 hour fcst:",
+          "offset": 18594461,
+          "description": "UGRD:850 mb"
+        },
+        {
+          "line": "29:19230501:d=2025062300:VGRD:850 mb:9 hour fcst:",
+          "offset": 19230501,
+          "description": "VGRD:850 mb"
+        },
+        {
+          "line": "30:19864501:d=2025062300:TMP:925 mb:9 hour fcst:",
+          "offset": 19864501,
+          "description": "TMP:925 mb"
+        },
+        {
+          "line": "32:21615331:d=2025062300:UGRD:925 mb:9 hour fcst:",
+          "offset": 21615331,
+          "description": "UGRD:925 mb"
+        },
+        {
+          "line": "33:22249192:d=2025062300:VGRD:925 mb:9 hour fcst:",
+          "offset": 22249192,
+          "description": "VGRD:925 mb"
+        },
+        {
+          "line": "34:22885059:d=2025062300:TMP:1000 mb:9 hour fcst:",
+          "offset": 22885059,
+          "description": "TMP:1000 mb"
+        },
+        {
+          "line": "36:24616025:d=2025062300:UGRD:1000 mb:9 hour fcst:",
+          "offset": 24616025,
+          "description": "UGRD:1000 mb"
+        },
+        {
+          "line": "37:25254472:d=2025062300:VGRD:1000 mb:9 hour fcst:",
+          "offset": 25254472,
+          "description": "VGRD:1000 mb"
+        },
+        {
+          "line": "42:28579290:d=2025062300:HGT:1000 mb:9 hour fcst:",
+          "offset": 28579290,
+          "description": "HGT:1000 mb"
+        },
+        {
+          "line": "62:38473569:d=2025062300:PRES:surface:9 hour fcst:",
+          "offset": 38473569,
+          "description": "PRES:surface"
+        },
+        {
+          "line": "71:45070030:d=2025062300:TMP:2 m above ground:9 hour fcst:",
+          "offset": 45070030,
+          "description": "TMP:2 m above ground"
+        },
+        {
+          "line": "75:50227586:d=2025062300:RH:2 m above ground:9 hour fcst:",
+          "offset": 50227586,
+          "description": "RH:2 m above ground"
+        },
+        {
+          "line": "77:52545645:d=2025062300:UGRD:10 m above ground:9 hour fcst:",
+          "offset": 52545645,
+          "description": "UGRD:10 m above ground"
+        },
+        {
+          "line": "78:54927260:d=2025062300:VGRD:10 m above ground:9 hour fcst:",
+          "offset": 54927260,
+          "description": "VGRD:10 m above ground"
+        },
+        {
+          "line": "83:61330643:d=2025062300:PRATE:surface:9 hour fcst:",
+          "offset": 61330643,
+          "description": "PRATE:surface"
+        },
+        {
+          "line": "119:82532484:d=2025062300:TCDC:entire atmosphere:9 hour fcst:",
+          "offset": 82532484,
+          "description": "TCDC:entire atmosphere"
+        },
+        {
+          "line": "153:120959397:d=2025062300:HPBL:surface:9 hour fcst:",
+          "offset": 120959397,
+          "description": "HPBL:surface"
+        }
+      ],
+      "subset_path": "data\\raw\\hrrr_20250623_00z_spinup\\hrrr.t00z.wrfsfcf09.grib2.selected.grib2",
+      "subset_size_bytes": 24675865,
+      "subset_sha256": "441906dfb3034b3f057d6b8a17488254226718f732206221c7d28386d11814a3"
+    },
+    {
+      "output_hour_index": 6,
+      "forecast_hour": 10,
+      "filename": "hrrr.t00z.wrfsfcf10.grib2",
+      "source_url": "https://noaa-hrrr-bdp-pds.s3.amazonaws.com/hrrr.20250623/conus/hrrr.t00z.wrfsfcf10.grib2",
+      "index_path": "data\\raw\\hrrr_20250623_00z_spinup\\hrrr.t00z.wrfsfcf10.grib2.idx",
+      "source_size_bytes": 151994610,
+      "selected_messages": [
+        {
+          "line": "14:7982580:d=2025062300:HGT:500 mb:10 hour fcst:",
+          "offset": 7982580,
+          "description": "HGT:500 mb"
+        },
+        {
+          "line": "15:8688362:d=2025062300:TMP:500 mb:10 hour fcst:",
+          "offset": 8688362,
+          "description": "TMP:500 mb"
+        },
+        {
+          "line": "17:10338849:d=2025062300:UGRD:500 mb:10 hour fcst:",
+          "offset": 10338849,
+          "description": "UGRD:500 mb"
+        },
+        {
+          "line": "18:10931755:d=2025062300:VGRD:500 mb:10 hour fcst:",
+          "offset": 10931755,
+          "description": "VGRD:500 mb"
+        },
+        {
+          "line": "19:11523510:d=2025062300:HGT:700 mb:10 hour fcst:",
+          "offset": 11523510,
+          "description": "HGT:700 mb"
+        },
+        {
+          "line": "20:12207847:d=2025062300:TMP:700 mb:10 hour fcst:",
+          "offset": 12207847,
+          "description": "TMP:700 mb"
+        },
+        {
+          "line": "23:14826198:d=2025062300:UGRD:700 mb:10 hour fcst:",
+          "offset": 14826198,
+          "description": "UGRD:700 mb"
+        },
+        {
+          "line": "24:15433724:d=2025062300:VGRD:700 mb:10 hour fcst:",
+          "offset": 15433724,
+          "description": "VGRD:700 mb"
+        },
+        {
+          "line": "25:16040077:d=2025062300:HGT:850 mb:10 hour fcst:",
+          "offset": 16040077,
+          "description": "HGT:850 mb"
+        },
+        {
+          "line": "26:16754984:d=2025062300:TMP:850 mb:10 hour fcst:",
+          "offset": 16754984,
+          "description": "TMP:850 mb"
+        },
+        {
+          "line": "28:18537281:d=2025062300:UGRD:850 mb:10 hour fcst:",
+          "offset": 18537281,
+          "description": "UGRD:850 mb"
+        },
+        {
+          "line": "29:19169318:d=2025062300:VGRD:850 mb:10 hour fcst:",
+          "offset": 19169318,
+          "description": "VGRD:850 mb"
+        },
+        {
+          "line": "30:19802792:d=2025062300:TMP:925 mb:10 hour fcst:",
+          "offset": 19802792,
+          "description": "TMP:925 mb"
+        },
+        {
+          "line": "32:21556108:d=2025062300:UGRD:925 mb:10 hour fcst:",
+          "offset": 21556108,
+          "description": "UGRD:925 mb"
+        },
+        {
+          "line": "33:22188176:d=2025062300:VGRD:925 mb:10 hour fcst:",
+          "offset": 22188176,
+          "description": "VGRD:925 mb"
+        },
+        {
+          "line": "34:22823147:d=2025062300:TMP:1000 mb:10 hour fcst:",
+          "offset": 22823147,
+          "description": "TMP:1000 mb"
+        },
+        {
+          "line": "36:24558530:d=2025062300:UGRD:1000 mb:10 hour fcst:",
+          "offset": 24558530,
+          "description": "UGRD:1000 mb"
+        },
+        {
+          "line": "37:25194766:d=2025062300:VGRD:1000 mb:10 hour fcst:",
+          "offset": 25194766,
+          "description": "VGRD:1000 mb"
+        },
+        {
+          "line": "42:28524694:d=2025062300:HGT:1000 mb:10 hour fcst:",
+          "offset": 28524694,
+          "description": "HGT:1000 mb"
+        },
+        {
+          "line": "62:38198302:d=2025062300:PRES:surface:10 hour fcst:",
+          "offset": 38198302,
+          "description": "PRES:surface"
+        },
+        {
+          "line": "71:44803705:d=2025062300:TMP:2 m above ground:10 hour fcst:",
+          "offset": 44803705,
+          "description": "TMP:2 m above ground"
+        },
+        {
+          "line": "75:49973611:d=2025062300:RH:2 m above ground:10 hour fcst:",
+          "offset": 49973611,
+          "description": "RH:2 m above ground"
+        },
+        {
+          "line": "77:52284961:d=2025062300:UGRD:10 m above ground:10 hour fcst:",
+          "offset": 52284961,
+          "description": "UGRD:10 m above ground"
+        },
+        {
+          "line": "78:54666576:d=2025062300:VGRD:10 m above ground:10 hour fcst:",
+          "offset": 54666576,
+          "description": "VGRD:10 m above ground"
+        },
+        {
+          "line": "83:61084572:d=2025062300:PRATE:surface:10 hour fcst:",
+          "offset": 61084572,
+          "description": "PRATE:surface"
+        },
+        {
+          "line": "119:82328957:d=2025062300:TCDC:entire atmosphere:10 hour fcst:",
+          "offset": 82328957,
+          "description": "TCDC:entire atmosphere"
+        },
+        {
+          "line": "153:121431595:d=2025062300:HPBL:surface:10 hour fcst:",
+          "offset": 121431595,
+          "description": "HPBL:surface"
+        }
+      ],
+      "subset_path": "data\\raw\\hrrr_20250623_00z_spinup\\hrrr.t00z.wrfsfcf10.grib2.selected.grib2",
+      "subset_size_bytes": 24651537,
+      "subset_sha256": "ea45e3eae916321d916c904a3619f66d81a5c69c8faf22770621c1fc598ec1bb"
+    },
+    {
+      "output_hour_index": 7,
+      "forecast_hour": 11,
+      "filename": "hrrr.t00z.wrfsfcf11.grib2",
+      "source_url": "https://noaa-hrrr-bdp-pds.s3.amazonaws.com/hrrr.20250623/conus/hrrr.t00z.wrfsfcf11.grib2",
+      "index_path": "data\\raw\\hrrr_20250623_00z_spinup\\hrrr.t00z.wrfsfcf11.grib2.idx",
+      "source_size_bytes": 155844279,
+      "selected_messages": [
+        {
+          "line": "14:7939231:d=2025062300:HGT:500 mb:11 hour fcst:",
+          "offset": 7939231,
+          "description": "HGT:500 mb"
+        },
+        {
+          "line": "15:8641145:d=2025062300:TMP:500 mb:11 hour fcst:",
+          "offset": 8641145,
+          "description": "TMP:500 mb"
+        },
+        {
+          "line": "17:10293158:d=2025062300:UGRD:500 mb:11 hour fcst:",
+          "offset": 10293158,
+          "description": "UGRD:500 mb"
+        },
+        {
+          "line": "18:10884165:d=2025062300:VGRD:500 mb:11 hour fcst:",
+          "offset": 10884165,
+          "description": "VGRD:500 mb"
+        },
+        {
+          "line": "19:11473214:d=2025062300:HGT:700 mb:11 hour fcst:",
+          "offset": 11473214,
+          "description": "HGT:700 mb"
+        },
+        {
+          "line": "20:12154367:d=2025062300:TMP:700 mb:11 hour fcst:",
+          "offset": 12154367,
+          "description": "TMP:700 mb"
+        },
+        {
+          "line": "23:14776234:d=2025062300:UGRD:700 mb:11 hour fcst:",
+          "offset": 14776234,
+          "description": "UGRD:700 mb"
+        },
+        {
+          "line": "24:15380145:d=2025062300:VGRD:700 mb:11 hour fcst:",
+          "offset": 15380145,
+          "description": "VGRD:700 mb"
+        },
+        {
+          "line": "25:15982395:d=2025062300:HGT:850 mb:11 hour fcst:",
+          "offset": 15982395,
+          "description": "HGT:850 mb"
+        },
+        {
+          "line": "26:16691861:d=2025062300:TMP:850 mb:11 hour fcst:",
+          "offset": 16691861,
+          "description": "TMP:850 mb"
+        },
+        {
+          "line": "28:18479995:d=2025062300:UGRD:850 mb:11 hour fcst:",
+          "offset": 18479995,
+          "description": "UGRD:850 mb"
+        },
+        {
+          "line": "29:19110912:d=2025062300:VGRD:850 mb:11 hour fcst:",
+          "offset": 19110912,
+          "description": "VGRD:850 mb"
+        },
+        {
+          "line": "30:19743093:d=2025062300:TMP:925 mb:11 hour fcst:",
+          "offset": 19743093,
+          "description": "TMP:925 mb"
+        },
+        {
+          "line": "32:21496596:d=2025062300:UGRD:925 mb:11 hour fcst:",
+          "offset": 21496596,
+          "description": "UGRD:925 mb"
+        },
+        {
+          "line": "33:22125530:d=2025062300:VGRD:925 mb:11 hour fcst:",
+          "offset": 22125530,
+          "description": "VGRD:925 mb"
+        },
+        {
+          "line": "34:22759691:d=2025062300:TMP:1000 mb:11 hour fcst:",
+          "offset": 22759691,
+          "description": "TMP:1000 mb"
+        },
+        {
+          "line": "36:24497183:d=2025062300:UGRD:1000 mb:11 hour fcst:",
+          "offset": 24497183,
+          "description": "UGRD:1000 mb"
+        },
+        {
+          "line": "37:25130556:d=2025062300:VGRD:1000 mb:11 hour fcst:",
+          "offset": 25130556,
+          "description": "VGRD:1000 mb"
+        },
+        {
+          "line": "42:28548759:d=2025062300:HGT:1000 mb:11 hour fcst:",
+          "offset": 28548759,
+          "description": "HGT:1000 mb"
+        },
+        {
+          "line": "62:38395883:d=2025062300:PRES:surface:11 hour fcst:",
+          "offset": 38395883,
+          "description": "PRES:surface"
+        },
+        {
+          "line": "71:45005251:d=2025062300:TMP:2 m above ground:11 hour fcst:",
+          "offset": 45005251,
+          "description": "TMP:2 m above ground"
+        },
+        {
+          "line": "75:50189911:d=2025062300:RH:2 m above ground:11 hour fcst:",
+          "offset": 50189911,
+          "description": "RH:2 m above ground"
+        },
+        {
+          "line": "77:52656445:d=2025062300:UGRD:10 m above ground:11 hour fcst:",
+          "offset": 52656445,
+          "description": "UGRD:10 m above ground"
+        },
+        {
+          "line": "78:55038060:d=2025062300:VGRD:10 m above ground:11 hour fcst:",
+          "offset": 55038060,
+          "description": "VGRD:10 m above ground"
+        },
+        {
+          "line": "83:61463964:d=2025062300:PRATE:surface:11 hour fcst:",
+          "offset": 61463964,
+          "description": "PRATE:surface"
+        },
+        {
+          "line": "119:82790004:d=2025062300:TCDC:entire atmosphere:11 hour fcst:",
+          "offset": 82790004,
+          "description": "TCDC:entire atmosphere"
+        },
+        {
+          "line": "153:124321475:d=2025062300:HPBL:surface:11 hour fcst:",
+          "offset": 124321475,
+          "description": "HPBL:surface"
+        }
+      ],
+      "subset_path": "data\\raw\\hrrr_20250623_00z_spinup\\hrrr.t00z.wrfsfcf11.grib2.selected.grib2",
+      "subset_size_bytes": 24642244,
+      "subset_sha256": "64907151e9dc88d8e86bf91e588dbd32ac54fb4d3c6faa62ab3cceadc496d716"
+    },
+    {
+      "output_hour_index": 8,
+      "forecast_hour": 12,
+      "filename": "hrrr.t00z.wrfsfcf12.grib2",
+      "source_url": "https://noaa-hrrr-bdp-pds.s3.amazonaws.com/hrrr.20250623/conus/hrrr.t00z.wrfsfcf12.grib2",
+      "index_path": "data\\raw\\hrrr_20250623_00z_spinup\\hrrr.t00z.wrfsfcf12.grib2.idx",
+      "source_size_bytes": 160042945,
+      "selected_messages": [
+        {
+          "line": "14:7895355:d=2025062300:HGT:500 mb:12 hour fcst:",
+          "offset": 7895355,
+          "description": "HGT:500 mb"
+        },
+        {
+          "line": "15:8593773:d=2025062300:TMP:500 mb:12 hour fcst:",
+          "offset": 8593773,
+          "description": "TMP:500 mb"
+        },
+        {
+          "line": "17:10245990:d=2025062300:UGRD:500 mb:12 hour fcst:",
+          "offset": 10245990,
+          "description": "UGRD:500 mb"
+        },
+        {
+          "line": "18:10835537:d=2025062300:VGRD:500 mb:12 hour fcst:",
+          "offset": 10835537,
+          "description": "VGRD:500 mb"
+        },
+        {
+          "line": "19:11424418:d=2025062300:HGT:700 mb:12 hour fcst:",
+          "offset": 11424418,
+          "description": "HGT:700 mb"
+        },
+        {
+          "line": "20:12102405:d=2025062300:TMP:700 mb:12 hour fcst:",
+          "offset": 12102405,
+          "description": "TMP:700 mb"
+        },
+        {
+          "line": "23:14724441:d=2025062300:UGRD:700 mb:12 hour fcst:",
+          "offset": 14724441,
+          "description": "UGRD:700 mb"
+        },
+        {
+          "line": "24:15327880:d=2025062300:VGRD:700 mb:12 hour fcst:",
+          "offset": 15327880,
+          "description": "VGRD:700 mb"
+        },
+        {
+          "line": "25:15930863:d=2025062300:HGT:850 mb:12 hour fcst:",
+          "offset": 15930863,
+          "description": "HGT:850 mb"
+        },
+        {
+          "line": "26:16648276:d=2025062300:TMP:850 mb:12 hour fcst:",
+          "offset": 16648276,
+          "description": "TMP:850 mb"
+        },
+        {
+          "line": "28:18440667:d=2025062300:UGRD:850 mb:12 hour fcst:",
+          "offset": 18440667,
+          "description": "UGRD:850 mb"
+        },
+        {
+          "line": "29:19069513:d=2025062300:VGRD:850 mb:12 hour fcst:",
+          "offset": 19069513,
+          "description": "VGRD:850 mb"
+        },
+        {
+          "line": "30:19690911:d=2025062300:TMP:925 mb:12 hour fcst:",
+          "offset": 19690911,
+          "description": "TMP:925 mb"
+        },
+        {
+          "line": "32:21444702:d=2025062300:UGRD:925 mb:12 hour fcst:",
+          "offset": 21444702,
+          "description": "UGRD:925 mb"
+        },
+        {
+          "line": "33:22072635:d=2025062300:VGRD:925 mb:12 hour fcst:",
+          "offset": 22072635,
+          "description": "VGRD:925 mb"
+        },
+        {
+          "line": "34:22704399:d=2025062300:TMP:1000 mb:12 hour fcst:",
+          "offset": 22704399,
+          "description": "TMP:1000 mb"
+        },
+        {
+          "line": "36:24448263:d=2025062300:UGRD:1000 mb:12 hour fcst:",
+          "offset": 24448263,
+          "description": "UGRD:1000 mb"
+        },
+        {
+          "line": "37:25078876:d=2025062300:VGRD:1000 mb:12 hour fcst:",
+          "offset": 25078876,
+          "description": "VGRD:1000 mb"
+        },
+        {
+          "line": "42:28439360:d=2025062300:HGT:1000 mb:12 hour fcst:",
+          "offset": 28439360,
+          "description": "HGT:1000 mb"
+        },
+        {
+          "line": "62:38050698:d=2025062300:PRES:surface:12 hour fcst:",
+          "offset": 38050698,
+          "description": "PRES:surface"
+        },
+        {
+          "line": "71:44686168:d=2025062300:TMP:2 m above ground:12 hour fcst:",
+          "offset": 44686168,
+          "description": "TMP:2 m above ground"
+        },
+        {
+          "line": "75:49873477:d=2025062300:RH:2 m above ground:12 hour fcst:",
+          "offset": 49873477,
+          "description": "RH:2 m above ground"
+        },
+        {
+          "line": "77:52354285:d=2025062300:UGRD:10 m above ground:12 hour fcst:",
+          "offset": 52354285,
+          "description": "UGRD:10 m above ground"
+        },
+        {
+          "line": "78:54735900:d=2025062300:VGRD:10 m above ground:12 hour fcst:",
+          "offset": 54735900,
+          "description": "VGRD:10 m above ground"
+        },
+        {
+          "line": "83:61107136:d=2025062300:PRATE:surface:12 hour fcst:",
+          "offset": 61107136,
+          "description": "PRATE:surface"
+        },
+        {
+          "line": "119:83226416:d=2025062300:TCDC:entire atmosphere:12 hour fcst:",
+          "offset": 83226416,
+          "description": "TCDC:entire atmosphere"
+        },
+        {
+          "line": "153:128475081:d=2025062300:HPBL:surface:12 hour fcst:",
+          "offset": 128475081,
+          "description": "HPBL:surface"
+        }
+      ],
+      "subset_path": "data\\raw\\hrrr_20250623_00z_spinup\\hrrr.t00z.wrfsfcf12.grib2.selected.grib2",
+      "subset_size_bytes": 24637537,
+      "subset_sha256": "c9181f35809d54807f5f2f8b0a482c054e94758332ecf7f0609d0a02c06cf3e2"
+    },
+    {
+      "output_hour_index": 9,
+      "forecast_hour": 13,
+      "filename": "hrrr.t00z.wrfsfcf13.grib2",
+      "source_url": "https://noaa-hrrr-bdp-pds.s3.amazonaws.com/hrrr.20250623/conus/hrrr.t00z.wrfsfcf13.grib2",
+      "index_path": "data\\raw\\hrrr_20250623_00z_spinup\\hrrr.t00z.wrfsfcf13.grib2.idx",
+      "source_size_bytes": 162000836,
+      "selected_messages": [
+        {
+          "line": "14:7874829:d=2025062300:HGT:500 mb:13 hour fcst:",
+          "offset": 7874829,
+          "description": "HGT:500 mb"
+        },
+        {
+          "line": "15:8571618:d=2025062300:TMP:500 mb:13 hour fcst:",
+          "offset": 8571618,
+          "description": "TMP:500 mb"
+        },
+        {
+          "line": "17:10226378:d=2025062300:UGRD:500 mb:13 hour fcst:",
+          "offset": 10226378,
+          "description": "UGRD:500 mb"
+        },
+        {
+          "line": "18:10814497:d=2025062300:VGRD:500 mb:13 hour fcst:",
+          "offset": 10814497,
+          "description": "VGRD:500 mb"
+        },
+        {
+          "line": "19:11408991:d=2025062300:HGT:700 mb:13 hour fcst:",
+          "offset": 11408991,
+          "description": "HGT:700 mb"
+        },
+        {
+          "line": "20:12083634:d=2025062300:TMP:700 mb:13 hour fcst:",
+          "offset": 12083634,
+          "description": "TMP:700 mb"
+        },
+        {
+          "line": "23:14709064:d=2025062300:UGRD:700 mb:13 hour fcst:",
+          "offset": 14709064,
+          "description": "UGRD:700 mb"
+        },
+        {
+          "line": "24:15310036:d=2025062300:VGRD:700 mb:13 hour fcst:",
+          "offset": 15310036,
+          "description": "VGRD:700 mb"
+        },
+        {
+          "line": "25:15910877:d=2025062300:HGT:850 mb:13 hour fcst:",
+          "offset": 15910877,
+          "description": "HGT:850 mb"
+        },
+        {
+          "line": "26:16623663:d=2025062300:TMP:850 mb:13 hour fcst:",
+          "offset": 16623663,
+          "description": "TMP:850 mb"
+        },
+        {
+          "line": "28:18417095:d=2025062300:UGRD:850 mb:13 hour fcst:",
+          "offset": 18417095,
+          "description": "UGRD:850 mb"
+        },
+        {
+          "line": "29:19033909:d=2025062300:VGRD:850 mb:13 hour fcst:",
+          "offset": 19033909,
+          "description": "VGRD:850 mb"
+        },
+        {
+          "line": "30:19662135:d=2025062300:TMP:925 mb:13 hour fcst:",
+          "offset": 19662135,
+          "description": "TMP:925 mb"
+        },
+        {
+          "line": "32:21416869:d=2025062300:UGRD:925 mb:13 hour fcst:",
+          "offset": 21416869,
+          "description": "UGRD:925 mb"
+        },
+        {
+          "line": "33:22039102:d=2025062300:VGRD:925 mb:13 hour fcst:",
+          "offset": 22039102,
+          "description": "VGRD:925 mb"
+        },
+        {
+          "line": "34:22667907:d=2025062300:TMP:1000 mb:13 hour fcst:",
+          "offset": 22667907,
+          "description": "TMP:1000 mb"
+        },
+        {
+          "line": "36:24423157:d=2025062300:UGRD:1000 mb:13 hour fcst:",
+          "offset": 24423157,
+          "description": "UGRD:1000 mb"
+        },
+        {
+          "line": "37:25039177:d=2025062300:VGRD:1000 mb:13 hour fcst:",
+          "offset": 25039177,
+          "description": "VGRD:1000 mb"
+        },
+        {
+          "line": "42:28348997:d=2025062300:HGT:1000 mb:13 hour fcst:",
+          "offset": 28348997,
+          "description": "HGT:1000 mb"
+        },
+        {
+          "line": "62:38336347:d=2025062300:PRES:surface:13 hour fcst:",
+          "offset": 38336347,
+          "description": "PRES:surface"
+        },
+        {
+          "line": "71:45028896:d=2025062300:TMP:2 m above ground:13 hour fcst:",
+          "offset": 45028896,
+          "description": "TMP:2 m above ground"
+        },
+        {
+          "line": "75:50261670:d=2025062300:RH:2 m above ground:13 hour fcst:",
+          "offset": 50261670,
+          "description": "RH:2 m above ground"
+        },
+        {
+          "line": "77:52751083:d=2025062300:UGRD:10 m above ground:13 hour fcst:",
+          "offset": 52751083,
+          "description": "UGRD:10 m above ground"
+        },
+        {
+          "line": "78:55132698:d=2025062300:VGRD:10 m above ground:13 hour fcst:",
+          "offset": 55132698,
+          "description": "VGRD:10 m above ground"
+        },
+        {
+          "line": "83:61631514:d=2025062300:PRATE:surface:13 hour fcst:",
+          "offset": 61631514,
+          "description": "PRATE:surface"
+        },
+        {
+          "line": "119:83882950:d=2025062300:TCDC:entire atmosphere:13 hour fcst:",
+          "offset": 83882950,
+          "description": "TCDC:entire atmosphere"
+        },
+        {
+          "line": "153:131161061:d=2025062300:HPBL:surface:13 hour fcst:",
+          "offset": 131161061,
+          "description": "HPBL:surface"
+        }
+      ],
+      "subset_path": "data\\raw\\hrrr_20250623_00z_spinup\\hrrr.t00z.wrfsfcf13.grib2.selected.grib2",
+      "subset_size_bytes": 24860566,
+      "subset_sha256": "036736b85c041a1d9f4257ca5fa8d7f97a5da0495a0074ed00d305117540699a"
+    },
+    {
+      "output_hour_index": 10,
+      "forecast_hour": 14,
+      "filename": "hrrr.t00z.wrfsfcf14.grib2",
+      "source_url": "https://noaa-hrrr-bdp-pds.s3.amazonaws.com/hrrr.20250623/conus/hrrr.t00z.wrfsfcf14.grib2",
+      "index_path": "data\\raw\\hrrr_20250623_00z_spinup\\hrrr.t00z.wrfsfcf14.grib2.idx",
+      "source_size_bytes": 164471758,
+      "selected_messages": [
+        {
+          "line": "14:7672534:d=2025062300:HGT:500 mb:14 hour fcst:",
+          "offset": 7672534,
+          "description": "HGT:500 mb"
+        },
+        {
+          "line": "15:8366214:d=2025062300:TMP:500 mb:14 hour fcst:",
+          "offset": 8366214,
+          "description": "TMP:500 mb"
+        },
+        {
+          "line": "17:10023256:d=2025062300:UGRD:500 mb:14 hour fcst:",
+          "offset": 10023256,
+          "description": "UGRD:500 mb"
+        },
+        {
+          "line": "18:10609515:d=2025062300:VGRD:500 mb:14 hour fcst:",
+          "offset": 10609515,
+          "description": "VGRD:500 mb"
+        },
+        {
+          "line": "19:11201727:d=2025062300:HGT:700 mb:14 hour fcst:",
+          "offset": 11201727,
+          "description": "HGT:700 mb"
+        },
+        {
+          "line": "20:11876621:d=2025062300:TMP:700 mb:14 hour fcst:",
+          "offset": 11876621,
+          "description": "TMP:700 mb"
+        },
+        {
+          "line": "23:14521218:d=2025062300:UGRD:700 mb:14 hour fcst:",
+          "offset": 14521218,
+          "description": "UGRD:700 mb"
+        },
+        {
+          "line": "24:15120177:d=2025062300:VGRD:700 mb:14 hour fcst:",
+          "offset": 15120177,
+          "description": "VGRD:700 mb"
+        },
+        {
+          "line": "25:15718714:d=2025062300:HGT:850 mb:14 hour fcst:",
+          "offset": 15718714,
+          "description": "HGT:850 mb"
+        },
+        {
+          "line": "26:16430541:d=2025062300:TMP:850 mb:14 hour fcst:",
+          "offset": 16430541,
+          "description": "TMP:850 mb"
+        },
+        {
+          "line": "28:18223121:d=2025062300:UGRD:850 mb:14 hour fcst:",
+          "offset": 18223121,
+          "description": "UGRD:850 mb"
+        },
+        {
+          "line": "29:18834851:d=2025062300:VGRD:850 mb:14 hour fcst:",
+          "offset": 18834851,
+          "description": "VGRD:850 mb"
+        },
+        {
+          "line": "30:19461346:d=2025062300:TMP:925 mb:14 hour fcst:",
+          "offset": 19461346,
+          "description": "TMP:925 mb"
+        },
+        {
+          "line": "32:21223938:d=2025062300:UGRD:925 mb:14 hour fcst:",
+          "offset": 21223938,
+          "description": "UGRD:925 mb"
+        },
+        {
+          "line": "33:21841651:d=2025062300:VGRD:925 mb:14 hour fcst:",
+          "offset": 21841651,
+          "description": "VGRD:925 mb"
+        },
+        {
+          "line": "34:22470078:d=2025062300:TMP:1000 mb:14 hour fcst:",
+          "offset": 22470078,
+          "description": "TMP:1000 mb"
+        },
+        {
+          "line": "36:24240187:d=2025062300:UGRD:1000 mb:14 hour fcst:",
+          "offset": 24240187,
+          "description": "UGRD:1000 mb"
+        },
+        {
+          "line": "37:24860434:d=2025062300:VGRD:1000 mb:14 hour fcst:",
+          "offset": 24860434,
+          "description": "VGRD:1000 mb"
+        },
+        {
+          "line": "42:28134892:d=2025062300:HGT:1000 mb:14 hour fcst:",
+          "offset": 28134892,
+          "description": "HGT:1000 mb"
+        },
+        {
+          "line": "62:38022378:d=2025062300:PRES:surface:14 hour fcst:",
+          "offset": 38022378,
+          "description": "PRES:surface"
+        },
+        {
+          "line": "71:44743466:d=2025062300:TMP:2 m above ground:14 hour fcst:",
+          "offset": 44743466,
+          "description": "TMP:2 m above ground"
+        },
+        {
+          "line": "75:50058693:d=2025062300:RH:2 m above ground:14 hour fcst:",
+          "offset": 50058693,
+          "description": "RH:2 m above ground"
+        },
+        {
+          "line": "77:52547806:d=2025062300:UGRD:10 m above ground:14 hour fcst:",
+          "offset": 52547806,
+          "description": "UGRD:10 m above ground"
+        },
+        {
+          "line": "78:54929421:d=2025062300:VGRD:10 m above ground:14 hour fcst:",
+          "offset": 54929421,
+          "description": "VGRD:10 m above ground"
+        },
+        {
+          "line": "83:61109086:d=2025062300:PRATE:surface:14 hour fcst:",
+          "offset": 61109086,
+          "description": "PRATE:surface"
+        },
+        {
+          "line": "119:84122730:d=2025062300:TCDC:entire atmosphere:14 hour fcst:",
+          "offset": 84122730,
+          "description": "TCDC:entire atmosphere"
+        },
+        {
+          "line": "153:134362255:d=2025062300:HPBL:surface:14 hour fcst:",
+          "offset": 134362255,
+          "description": "HPBL:surface"
+        }
+      ],
+      "subset_path": "data\\raw\\hrrr_20250623_00z_spinup\\hrrr.t00z.wrfsfcf14.grib2.selected.grib2",
+      "subset_size_bytes": 24692872,
+      "subset_sha256": "6e97c5a38272a7209529cb4dadfeb8960b013abb114987d3e88d2e649a71db31"
+    },
+    {
+      "output_hour_index": 11,
+      "forecast_hour": 15,
+      "filename": "hrrr.t00z.wrfsfcf15.grib2",
+      "source_url": "https://noaa-hrrr-bdp-pds.s3.amazonaws.com/hrrr.20250623/conus/hrrr.t00z.wrfsfcf15.grib2",
+      "index_path": "data\\raw\\hrrr_20250623_00z_spinup\\hrrr.t00z.wrfsfcf15.grib2.idx",
+      "source_size_bytes": 165414682,
+      "selected_messages": [
+        {
+          "line": "14:7559749:d=2025062300:HGT:500 mb:15 hour fcst:",
+          "offset": 7559749,
+          "description": "HGT:500 mb"
+        },
+        {
+          "line": "15:8254655:d=2025062300:TMP:500 mb:15 hour fcst:",
+          "offset": 8254655,
+          "description": "TMP:500 mb"
+        },
+        {
+          "line": "17:9912364:d=2025062300:UGRD:500 mb:15 hour fcst:",
+          "offset": 9912364,
+          "description": "UGRD:500 mb"
+        },
+        {
+          "line": "18:10497030:d=2025062300:VGRD:500 mb:15 hour fcst:",
+          "offset": 10497030,
+          "description": "VGRD:500 mb"
+        },
+        {
+          "line": "19:11082399:d=2025062300:HGT:700 mb:15 hour fcst:",
+          "offset": 11082399,
+          "description": "HGT:700 mb"
+        },
+        {
+          "line": "20:11758751:d=2025062300:TMP:700 mb:15 hour fcst:",
+          "offset": 11758751,
+          "description": "TMP:700 mb"
+        },
+        {
+          "line": "23:14381080:d=2025062300:UGRD:700 mb:15 hour fcst:",
+          "offset": 14381080,
+          "description": "UGRD:700 mb"
+        },
+        {
+          "line": "24:14980043:d=2025062300:VGRD:700 mb:15 hour fcst:",
+          "offset": 14980043,
+          "description": "VGRD:700 mb"
+        },
+        {
+          "line": "25:15577085:d=2025062300:HGT:850 mb:15 hour fcst:",
+          "offset": 15577085,
+          "description": "HGT:850 mb"
+        },
+        {
+          "line": "26:16288930:d=2025062300:TMP:850 mb:15 hour fcst:",
+          "offset": 16288930,
+          "description": "TMP:850 mb"
+        },
+        {
+          "line": "28:18083171:d=2025062300:UGRD:850 mb:15 hour fcst:",
+          "offset": 18083171,
+          "description": "UGRD:850 mb"
+        },
+        {
+          "line": "29:18693488:d=2025062300:VGRD:850 mb:15 hour fcst:",
+          "offset": 18693488,
+          "description": "VGRD:850 mb"
+        },
+        {
+          "line": "30:19317322:d=2025062300:TMP:925 mb:15 hour fcst:",
+          "offset": 19317322,
+          "description": "TMP:925 mb"
+        },
+        {
+          "line": "32:21108371:d=2025062300:UGRD:925 mb:15 hour fcst:",
+          "offset": 21108371,
+          "description": "UGRD:925 mb"
+        },
+        {
+          "line": "33:21725039:d=2025062300:VGRD:925 mb:15 hour fcst:",
+          "offset": 21725039,
+          "description": "VGRD:925 mb"
+        },
+        {
+          "line": "34:22350565:d=2025062300:TMP:1000 mb:15 hour fcst:",
+          "offset": 22350565,
+          "description": "TMP:1000 mb"
+        },
+        {
+          "line": "36:24131089:d=2025062300:UGRD:1000 mb:15 hour fcst:",
+          "offset": 24131089,
+          "description": "UGRD:1000 mb"
+        },
+        {
+          "line": "37:24751783:d=2025062300:VGRD:1000 mb:15 hour fcst:",
+          "offset": 24751783,
+          "description": "VGRD:1000 mb"
+        },
+        {
+          "line": "42:28035115:d=2025062300:HGT:1000 mb:15 hour fcst:",
+          "offset": 28035115,
+          "description": "HGT:1000 mb"
+        },
+        {
+          "line": "62:37384819:d=2025062300:PRES:surface:15 hour fcst:",
+          "offset": 37384819,
+          "description": "PRES:surface"
+        },
+        {
+          "line": "71:44132815:d=2025062300:TMP:2 m above ground:15 hour fcst:",
+          "offset": 44132815,
+          "description": "TMP:2 m above ground"
+        },
+        {
+          "line": "75:49494124:d=2025062300:RH:2 m above ground:15 hour fcst:",
+          "offset": 49494124,
+          "description": "RH:2 m above ground"
+        },
+        {
+          "line": "77:51835506:d=2025062300:UGRD:10 m above ground:15 hour fcst:",
+          "offset": 51835506,
+          "description": "UGRD:10 m above ground"
+        },
+        {
+          "line": "78:54217121:d=2025062300:VGRD:10 m above ground:15 hour fcst:",
+          "offset": 54217121,
+          "description": "VGRD:10 m above ground"
+        },
+        {
+          "line": "83:60551030:d=2025062300:PRATE:surface:15 hour fcst:",
+          "offset": 60551030,
+          "description": "PRATE:surface"
+        },
+        {
+          "line": "119:83603665:d=2025062300:TCDC:entire atmosphere:15 hour fcst:",
+          "offset": 83603665,
+          "description": "TCDC:entire atmosphere"
+        },
+        {
+          "line": "153:133995777:d=2025062300:HPBL:surface:15 hour fcst:",
+          "offset": 133995777,
+          "description": "HPBL:surface"
+        }
+      ],
+      "subset_path": "data\\raw\\hrrr_20250623_00z_spinup\\hrrr.t00z.wrfsfcf15.grib2.selected.grib2",
+      "subset_size_bytes": 24992005,
+      "subset_sha256": "b2c3bc5cfe7e1f29d4da56b3b1f76e865cf39f68d568ee85d2a18fa42a1ae0a0"
+    },
+    {
+      "output_hour_index": 12,
+      "forecast_hour": 16,
+      "filename": "hrrr.t00z.wrfsfcf16.grib2",
+      "source_url": "https://noaa-hrrr-bdp-pds.s3.amazonaws.com/hrrr.20250623/conus/hrrr.t00z.wrfsfcf16.grib2",
+      "index_path": "data\\raw\\hrrr_20250623_00z_spinup\\hrrr.t00z.wrfsfcf16.grib2.idx",
+      "source_size_bytes": 166530294,
+      "selected_messages": [
+        {
+          "line": "14:7572559:d=2025062300:HGT:500 mb:16 hour fcst:",
+          "offset": 7572559,
+          "description": "HGT:500 mb"
+        },
+        {
+          "line": "15:8263987:d=2025062300:TMP:500 mb:16 hour fcst:",
+          "offset": 8263987,
+          "description": "TMP:500 mb"
+        },
+        {
+          "line": "17:9924097:d=2025062300:UGRD:500 mb:16 hour fcst:",
+          "offset": 9924097,
+          "description": "UGRD:500 mb"
+        },
+        {
+          "line": "18:10510535:d=2025062300:VGRD:500 mb:16 hour fcst:",
+          "offset": 10510535,
+          "description": "VGRD:500 mb"
+        },
+        {
+          "line": "19:11101938:d=2025062300:HGT:700 mb:16 hour fcst:",
+          "offset": 11101938,
+          "description": "HGT:700 mb"
+        },
+        {
+          "line": "20:11777923:d=2025062300:TMP:700 mb:16 hour fcst:",
+          "offset": 11777923,
+          "description": "TMP:700 mb"
+        },
+        {
+          "line": "23:14432005:d=2025062300:UGRD:700 mb:16 hour fcst:",
+          "offset": 14432005,
+          "description": "UGRD:700 mb"
+        },
+        {
+          "line": "24:15030809:d=2025062300:VGRD:700 mb:16 hour fcst:",
+          "offset": 15030809,
+          "description": "VGRD:700 mb"
+        },
+        {
+          "line": "25:15627225:d=2025062300:HGT:850 mb:16 hour fcst:",
+          "offset": 15627225,
+          "description": "HGT:850 mb"
+        },
+        {
+          "line": "26:16342303:d=2025062300:TMP:850 mb:16 hour fcst:",
+          "offset": 16342303,
+          "description": "TMP:850 mb"
+        },
+        {
+          "line": "28:18181390:d=2025062300:UGRD:850 mb:16 hour fcst:",
+          "offset": 18181390,
+          "description": "UGRD:850 mb"
+        },
+        {
+          "line": "29:18793209:d=2025062300:VGRD:850 mb:16 hour fcst:",
+          "offset": 18793209,
+          "description": "VGRD:850 mb"
+        },
+        {
+          "line": "30:19412789:d=2025062300:TMP:925 mb:16 hour fcst:",
+          "offset": 19412789,
+          "description": "TMP:925 mb"
+        },
+        {
+          "line": "32:21218695:d=2025062300:UGRD:925 mb:16 hour fcst:",
+          "offset": 21218695,
+          "description": "UGRD:925 mb"
+        },
+        {
+          "line": "33:21835393:d=2025062300:VGRD:925 mb:16 hour fcst:",
+          "offset": 21835393,
+          "description": "VGRD:925 mb"
+        },
+        {
+          "line": "34:22456369:d=2025062300:TMP:1000 mb:16 hour fcst:",
+          "offset": 22456369,
+          "description": "TMP:1000 mb"
+        },
+        {
+          "line": "36:24257582:d=2025062300:UGRD:1000 mb:16 hour fcst:",
+          "offset": 24257582,
+          "description": "UGRD:1000 mb"
+        },
+        {
+          "line": "37:24881775:d=2025062300:VGRD:1000 mb:16 hour fcst:",
+          "offset": 24881775,
+          "description": "VGRD:1000 mb"
+        },
+        {
+          "line": "42:28250341:d=2025062300:HGT:1000 mb:16 hour fcst:",
+          "offset": 28250341,
+          "description": "HGT:1000 mb"
+        },
+        {
+          "line": "62:38308742:d=2025062300:PRES:surface:16 hour fcst:",
+          "offset": 38308742,
+          "description": "PRES:surface"
+        },
+        {
+          "line": "71:45068139:d=2025062300:TMP:2 m above ground:16 hour fcst:",
+          "offset": 45068139,
+          "description": "TMP:2 m above ground"
+        },
+        {
+          "line": "75:50456854:d=2025062300:RH:2 m above ground:16 hour fcst:",
+          "offset": 50456854,
+          "description": "RH:2 m above ground"
+        },
+        {
+          "line": "77:52928020:d=2025062300:UGRD:10 m above ground:16 hour fcst:",
+          "offset": 52928020,
+          "description": "UGRD:10 m above ground"
+        },
+        {
+          "line": "78:55309635:d=2025062300:VGRD:10 m above ground:16 hour fcst:",
+          "offset": 55309635,
+          "description": "VGRD:10 m above ground"
+        },
+        {
+          "line": "83:61601252:d=2025062300:PRATE:surface:16 hour fcst:",
+          "offset": 61601252,
+          "description": "PRATE:surface"
+        },
+        {
+          "line": "119:85157687:d=2025062300:TCDC:entire atmosphere:16 hour fcst:",
+          "offset": 85157687,
+          "description": "TCDC:entire atmosphere"
+        },
+        {
+          "line": "153:135473308:d=2025062300:HPBL:surface:16 hour fcst:",
+          "offset": 135473308,
+          "description": "HPBL:surface"
+        }
+      ],
+      "subset_path": "data\\raw\\hrrr_20250623_00z_spinup\\hrrr.t00z.wrfsfcf16.grib2.selected.grib2",
+      "subset_size_bytes": 25059822,
+      "subset_sha256": "307ed0124949dbd4efea65aaf44172bc1426f30217ee7c310bea4a9387f87e83"
+    },
+    {
+      "output_hour_index": 13,
+      "forecast_hour": 17,
+      "filename": "hrrr.t00z.wrfsfcf17.grib2",
+      "source_url": "https://noaa-hrrr-bdp-pds.s3.amazonaws.com/hrrr.20250623/conus/hrrr.t00z.wrfsfcf17.grib2",
+      "index_path": "data\\raw\\hrrr_20250623_00z_spinup\\hrrr.t00z.wrfsfcf17.grib2.idx",
+      "source_size_bytes": 165614872,
+      "selected_messages": [
+        {
+          "line": "14:7615703:d=2025062300:HGT:500 mb:17 hour fcst:",
+          "offset": 7615703,
+          "description": "HGT:500 mb"
+        },
+        {
+          "line": "15:8307487:d=2025062300:TMP:500 mb:17 hour fcst:",
+          "offset": 8307487,
+          "description": "TMP:500 mb"
+        },
+        {
+          "line": "17:9975640:d=2025062300:UGRD:500 mb:17 hour fcst:",
+          "offset": 9975640,
+          "description": "UGRD:500 mb"
+        },
+        {
+          "line": "18:10562117:d=2025062300:VGRD:500 mb:17 hour fcst:",
+          "offset": 10562117,
+          "description": "VGRD:500 mb"
+        },
+        {
+          "line": "19:11154742:d=2025062300:HGT:700 mb:17 hour fcst:",
+          "offset": 11154742,
+          "description": "HGT:700 mb"
+        },
+        {
+          "line": "20:11833012:d=2025062300:TMP:700 mb:17 hour fcst:",
+          "offset": 11833012,
+          "description": "TMP:700 mb"
+        },
+        {
+          "line": "23:14511404:d=2025062300:UGRD:700 mb:17 hour fcst:",
+          "offset": 14511404,
+          "description": "UGRD:700 mb"
+        },
+        {
+          "line": "24:15111957:d=2025062300:VGRD:700 mb:17 hour fcst:",
+          "offset": 15111957,
+          "description": "VGRD:700 mb"
+        },
+        {
+          "line": "25:15708553:d=2025062300:HGT:850 mb:17 hour fcst:",
+          "offset": 15708553,
+          "description": "HGT:850 mb"
+        },
+        {
+          "line": "26:16428517:d=2025062300:TMP:850 mb:17 hour fcst:",
+          "offset": 16428517,
+          "description": "TMP:850 mb"
+        },
+        {
+          "line": "28:18283806:d=2025062300:UGRD:850 mb:17 hour fcst:",
+          "offset": 18283806,
+          "description": "UGRD:850 mb"
+        },
+        {
+          "line": "29:18896587:d=2025062300:VGRD:850 mb:17 hour fcst:",
+          "offset": 18896587,
+          "description": "VGRD:850 mb"
+        },
+        {
+          "line": "30:19512232:d=2025062300:TMP:925 mb:17 hour fcst:",
+          "offset": 19512232,
+          "description": "TMP:925 mb"
+        },
+        {
+          "line": "32:21314681:d=2025062300:UGRD:925 mb:17 hour fcst:",
+          "offset": 21314681,
+          "description": "UGRD:925 mb"
+        },
+        {
+          "line": "33:21932377:d=2025062300:VGRD:925 mb:17 hour fcst:",
+          "offset": 21932377,
+          "description": "VGRD:925 mb"
+        },
+        {
+          "line": "34:22549349:d=2025062300:TMP:1000 mb:17 hour fcst:",
+          "offset": 22549349,
+          "description": "TMP:1000 mb"
+        },
+        {
+          "line": "36:24347308:d=2025062300:UGRD:1000 mb:17 hour fcst:",
+          "offset": 24347308,
+          "description": "UGRD:1000 mb"
+        },
+        {
+          "line": "37:24965463:d=2025062300:VGRD:1000 mb:17 hour fcst:",
+          "offset": 24965463,
+          "description": "VGRD:1000 mb"
+        },
+        {
+          "line": "42:28365942:d=2025062300:HGT:1000 mb:17 hour fcst:",
+          "offset": 28365942,
+          "description": "HGT:1000 mb"
+        },
+        {
+          "line": "62:37838725:d=2025062300:PRES:surface:17 hour fcst:",
+          "offset": 37838725,
+          "description": "PRES:surface"
+        },
+        {
+          "line": "71:44605862:d=2025062300:TMP:2 m above ground:17 hour fcst:",
+          "offset": 44605862,
+          "description": "TMP:2 m above ground"
+        },
+        {
+          "line": "75:50038620:d=2025062300:RH:2 m above ground:17 hour fcst:",
+          "offset": 50038620,
+          "description": "RH:2 m above ground"
+        },
+        {
+          "line": "77:52500746:d=2025062300:UGRD:10 m above ground:17 hour fcst:",
+          "offset": 52500746,
+          "description": "UGRD:10 m above ground"
+        },
+        {
+          "line": "78:54882361:d=2025062300:VGRD:10 m above ground:17 hour fcst:",
+          "offset": 54882361,
+          "description": "VGRD:10 m above ground"
+        },
+        {
+          "line": "83:61174100:d=2025062300:PRATE:surface:17 hour fcst:",
+          "offset": 61174100,
+          "description": "PRATE:surface"
+        },
+        {
+          "line": "119:85119049:d=2025062300:TCDC:entire atmosphere:17 hour fcst:",
+          "offset": 85119049,
+          "description": "TCDC:entire atmosphere"
+        },
+        {
+          "line": "153:134661797:d=2025062300:HPBL:surface:17 hour fcst:",
+          "offset": 134661797,
+          "description": "HPBL:surface"
+        }
+      ],
+      "subset_path": "data\\raw\\hrrr_20250623_00z_spinup\\hrrr.t00z.wrfsfcf17.grib2.selected.grib2",
+      "subset_size_bytes": 25108258,
+      "subset_sha256": "23eb1aae7ed539c2c55befe36564f0f199480893855a427a7f9a498f0f2692ba"
+    }
+  ],
+  "warning": "Selected GRIB2 messages are HRRR model fields. They are not WRF wrfout NetCDF and are not direct MMIF input."
+}

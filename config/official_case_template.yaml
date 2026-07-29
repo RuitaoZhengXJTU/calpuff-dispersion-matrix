@@ -1,0 +1,61 @@
+# Portable official CALPUFF A/B case manifest.
+# Paths are relative to the repository root. Copy this file for each study.
+#
+# The runner creates B0 (generator emissions -> c_1) and A[1] ... A[hours-1]
+# (regional concentration states). It does not use the legacy emulator.
+
+case_id: example_city_20260101_00z
+
+time:
+  # ISO-8601 UTC. Convert local civil time before writing this field.
+  start_utc: "2026-01-01T00:00:00Z"
+  # One-hour state intervals. The first interval is represented by B0.
+  hours: 24
+
+paths:
+  # Prepared from the GeoJSON partition by prepare_official_sparse_calpuff.py.
+  case_root: official_calpuff/example_city_20260101_00z
+  partition_dir: population_partitions/example_city_partition
+  sources: official_calpuff/example_city_20260101_00z/inputs/sources_16_per_region.csv
+  receptors: official_calpuff/example_city_20260101_00z/inputs/receptors_9_per_region.csv
+  receptor_batch_dir: official_calpuff/example_city_20260101_00z/inputs/receptor_batches
+  region_index: official_calpuff/example_city_20260101_00z/inputs/matrix_region_index.csv
+  # One row per modeled data center/generator; format is documented in the guide.
+  generators: data/example_city_data_centers.csv
+  # One row per (region_id, hour_index), used only for the A-state volume conversion.
+  weather: data/processed/example_city_20260101_00z/weather_by_region_hour.csv
+  # Must be produced for exactly this grid/projection and cover the full time window.
+  calmet_dat: official_calpuff/example_city_20260101_00z/met/CALMET.DAT
+  output_root: outputs/official_ab_example_city_20260101_00z
+
+model:
+  # 0 retains all target receptors. A positive value is a documented geometric
+  # sparse approximation in the projected coordinate system below.
+  a_sparse_radius_km: 150.0
+
+# These example LCC values are placeholders. Replace the entire block with
+# values that exactly match the new CALMET.DAT meteorological grid.
+# projected_crs transforms GeoJSON lon/lat into source/receptor x_m,y_m.
+calpuff_domain:
+  projected_crs: "+proj=lcc +lat_1=33 +lat_2=39.5 +lat_0=37 +lon_0=-77.5 +datum=WGS84 +units=m +no_defs"
+  pmap: LCC
+  datum: WGS-84
+  feast_km: 0.0
+  fnorth_km: 0.0
+  rlat0: N37.0
+  rlon0: W77.5
+  xlat1: N33.0
+  xlat2: N39.5
+  nx: 79
+  ny: 38
+  nz: 10
+  zface_m: [0.0, 20.0, 40.0, 80.0, 160.0, 320.0, 640.0, 1200.0, 2000.0, 3000.0, 4000.0]
+  dgrid_km: 10.0
+  xorig_km: -560.0
+  yorig_km: -60.0
+
+meteorology:
+  # Optional MMIF draft extent: south, west, north, east (degrees). Null makes
+  # the preparer derive a minimal buffered partition extent; set an explicit
+  # scientifically selected transport domain for a real production case.
+  mmif_grid_ll: null
