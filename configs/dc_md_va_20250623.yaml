@@ -1,0 +1,70 @@
+# Canonical DC/Maryland/Virginia experiment: 2025-06-23 14:00 EDT (18Z).
+case_id: case_20250623_18z_30sqmi
+
+time:
+  start_utc: "2025-06-23T18:00:00Z"
+  hours: 24
+
+# Each selected GRIB2 file is a compact LFS input.  The main window includes
+# f00--f24 because the ppb state conversion needs both endpoints of A[23].
+hrrr:
+  main_window:
+    date: "20250623"
+    cycle_utc: 18
+    start_hour: 0
+    hours: 25
+  spinup_window:
+    date: "20250623"
+    cycle_utc: 0
+    start_hour: 4
+    hours: 14
+
+paths:
+  case_root: official_calpuff/case_20250623_18z_30sqmi
+  partition_dir: population_partitions/area_capped_30sqmi_population_balanced
+  subregions: population_partitions/area_capped_30sqmi_population_balanced/subregions.geojson
+  sources: official_calpuff/case_20250623_18z_30sqmi/inputs/sources_16_per_region.csv
+  receptors: official_calpuff/case_20250623_18z_30sqmi/inputs/receptors_9_per_region.csv
+  receptor_batch_dir: official_calpuff/case_20250623_18z_30sqmi/inputs/receptor_batches
+  region_index: official_calpuff/case_20250623_18z_30sqmi/inputs/matrix_region_index.csv
+  generators: data/examples/dc_md_va_20250623/generators.csv
+  stations: data/examples/dc_md_va_20250623/stations.csv
+  hrrr_main_raw_dir: data/raw/hrrr_20250623_18z
+  hrrr_spinup_raw_dir: data/raw/hrrr_20250623_00z_spinup
+  hrrr_main_manifest: data/manifests/hrrr_20250623_18z.json
+  hrrr_spinup_manifest: data/manifests/hrrr_20250623_00z_spinup.json
+  station_met_main: data/processed/hrrr_station_met_20250623_18z
+  station_met_spinup: data/processed/hrrr_station_met_20250623_00z_spinup
+  weather: data/processed/hrrr_region_weather_20250623_18z/weather_by_region_hour.csv
+  calmet_dir: official_calpuff/case_20250623_18z_30sqmi/met/calmet_hrrr
+  calmet_dat: official_calpuff/case_20250623_18z_30sqmi/met/calmet_hrrr/CALMET.DAT
+  output_root: outputs/official_ab_20250623_18z_ppb
+
+model:
+  a_sparse_radius_km: 150.0
+
+concentration:
+  output_unit: ppb
+  tracer_species: NO2_equivalent_passive_tracer
+  molecular_weight_g_mol: 46.0055
+
+calpuff_domain:
+  projected_crs: "+proj=lcc +lat_1=33 +lat_2=39.5 +lat_0=37 +lon_0=-77.5 +datum=WGS84 +units=m +no_defs"
+  pmap: LCC
+  datum: WGS-84
+  feast_km: 0.0
+  fnorth_km: 0.0
+  rlat0: N37.0
+  rlon0: W77.5
+  xlat1: N33.0
+  xlat2: N39.5
+  nx: 79
+  ny: 38
+  nz: 10
+  zface_m: [0.0, 20.0, 40.0, 80.0, 160.0, 320.0, 640.0, 1200.0, 2000.0, 3000.0, 4000.0]
+  dgrid_km: 10.0
+  xorig_km: -560.0
+  yorig_km: -60.0
+
+meteorology:
+  mmif_grid_ll: [35.8, -84.5, 40.5, -74.0]
