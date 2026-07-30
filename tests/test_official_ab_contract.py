@@ -51,3 +51,17 @@ def test_official_ab_validator_uses_horizon_from_contract(tmp_path: Path):
     contract_path.write_text(json.dumps(contract), encoding="utf-8")
 
     assert main(["--output-root", str(tmp_path)]) == 0
+
+
+def test_official_ab_validator_uses_configured_ppb_b0_filename(tmp_path: Path):
+    _write_package(tmp_path, range(1, 24))
+    legacy = tmp_path / "B0" / "B0_g_m3_per_lb.npz"
+    ppb = tmp_path / "B0" / "B0_ppb_per_lb.npz"
+    legacy.rename(ppb)
+    contract_path = tmp_path / "matrix_contract.json"
+    contract = json.loads(contract_path.read_text(encoding="utf-8"))
+    contract["b0_file"] = "B0/B0_ppb_per_lb.npz"
+    contract["concentration_unit"] = "ppb"
+    contract_path.write_text(json.dumps(contract), encoding="utf-8")
+
+    assert main(["--output-root", str(tmp_path)]) == 0

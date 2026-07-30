@@ -13,12 +13,21 @@ paths:
   receptor_batch_dir: official_calpuff/case_20250623_18z_30sqmi/inputs/receptor_batches
   region_index: official_calpuff/case_20250623_18z_30sqmi/inputs/matrix_region_index.csv
   generators: data/data_centers_example.csv
+  # Hour indices 0..24 are required: PBLH for state-source hours 0..23,
+  # and temperature/pressure at both endpoints of every ppb transition.
   weather: data/processed/hrrr_region_weather_20250623_18z/weather_by_region_hour.csv
   calmet_dat: official_calpuff/case_20250623_18z_30sqmi/met/calmet_hrrr/CALMET.DAT
-  output_root: outputs/official_ab_20250623_18z
+  output_root: outputs/official_ab_20250623_18z_ppb
 
 model:
   a_sparse_radius_km: 150.0
+
+concentration:
+  # ppb is applicable only to gases. The CALPUFF control files use NO2 as an
+  # inert numerical tracer with chemistry and deposition disabled.
+  output_unit: ppb
+  tracer_species: NO2_equivalent_passive_tracer
+  molecular_weight_g_mol: 46.0055
 
 calpuff_domain:
   projected_crs: "+proj=lcc +lat_1=33 +lat_2=39.5 +lat_0=37 +lon_0=-77.5 +datum=WGS84 +units=m +no_defs"

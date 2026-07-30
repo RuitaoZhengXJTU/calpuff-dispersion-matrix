@@ -31,6 +31,7 @@ import numpy as np
 import pandas as pd
 from scipy.sparse import csc_matrix, save_npz
 
+from concentration_units import DEFAULT_NO2_MOLECULAR_WEIGHT_G_MOL, ppb_factor_array
 from official_case_builder import CalpuffCaseFactory, CalpuffDomain, load_csv_rows
 from official_case_config import load_case_config, mapping_value, project_path
 from parse_calpost_tseries import parse_calpost_tseries
@@ -45,7 +46,7 @@ from run_official_sparse_matrix import (
 ROOT = Path(__file__).resolve().parent
 CASE_ROOT = ROOT / "official_calpuff" / "case_20250623_18z_30sqmi"
 PARTITION = ROOT / "population_partitions" / "area_capped_30sqmi_population_balanced"
-DEFAULT_OUTPUT = ROOT / "outputs" / "official_ab_20250623_18z"
+DEFAULT_OUTPUT = ROOT / "outputs" / "official_ab_20250623_18z_ppb"
 DEFAULT_SOURCES = CASE_ROOT / "inputs" / "sources_16_per_region.csv"
 DEFAULT_RECEPTORS = CASE_ROOT / "inputs" / "receptors_9_per_region.csv"
 DEFAULT_BATCH_DIR = CASE_ROOT / "inputs" / "receptor_batches"
@@ -105,6 +106,18 @@ def main(argv: list[str] | None = None) -> int:
         help="Keep target receptors within this projected distance of each A source region; use 0 to disable",
     )
     parser.add_argument("--unit-concentration-ug-m3", type=float, default=1.0)
+    parser.add_argument(
+        "--concentration-unit",
+        choices=("ppb", "g_m3"),
+        default=None,
+        help="state/output concentration unit; ppb is only valid for gaseous tracers",
+    )
+    parser.add_argument(
+        "--molecular-weight-g-mol",
+        type=float,
+        default=None,
+        help="gas molecular weight used for g/m3-to-ppb conversion",
+    )
     parser.add_argument("--resume", action="store_true")
     parser.add_argument(
         "--continue-on-error",
@@ -138,6 +151,8 @@ def main(argv: list[str] | None = None) -> int:
         raise ValueError("unit-concentration-ug-m3 must be positive")
     if args.a_sparse_radius_km < 0:
         raise ValueError("a-sparse-radius-km must be nonnegative")
+    if args.concentration_unit == "ppb" and args.molecular_weight_g_mol <= 0:
+        raise ValueError("molecular-weight-g-mol must be positive for ppb output")
 
     paths["output_root"].mkdir(parents=True, exist_ok=True)
     start_utc = _parse_start_utc(args.start_utc)
@@ -157,9 +172,22 @@ def main(argv: list[str] | None = None) -> int:
     )
 
     weather = None
-    if args.mode in {"a", "all"}:
+    ppb_factors = None
+    if args.mode in {"a", "all"} or args.concentration_unit == "ppb":
         weather_path = paths["weather"] or _default_weather_path(paths["partition_dir"])
-        weather = _load_weather(weather_path, region_ids, args.hours)
+        weather = _load_weather(
+            weather_path,
+            region_ids,
+            args.hours,
+            require_ppb_endpoints=args.concentration_unit == "ppb",
+        )
+        if args.concentration_unit == "ppb":
+            ppb_factors = ppb_factor_array(
+                weather,
+                region_ids,
+                args.hours,
+                float(args.molecular_weight_g_mol),
+            )
     output = paths["output_root"]
     contract = {
         "created_utc": datetime.now(timezone.utc).isoformat(),
@@ -180,18 +208,37 @@ def main(argv: list[str] | None = None) -> int:
         "deposition": "off",
         "calmet_dat_sha256": _sha256(paths["calmet_dat"]) if paths["calmet_dat"].exists() else None,
         "unit_concentration_ug_m3": float(args.unit_concentration_ug_m3),
+        "concentration_unit": args.concentration_unit,
+        "state_unit": _state_unit(args),
+        "b0_unit": _b0_unit(args),
+        "tracer_species": args.tracer_species,
+        "molecular_weight_g_mol": float(args.molecular_weight_g_mol),
+        "gas_unit_conversion": (
+            "ppb = (g/m3) * R * temperature_k * 1e9 / (pressure_pa * molecular_weight_g_mol)"
+            if args.concentration_unit == "ppb" else None
+        ),
         "a_sparse_radius_km": float(args.a_sparse_radius_km) if args.a_sparse_radius_km else None,
         "a_sparsification": (
             "geometric target-receptor radius around each source-region centroid in projected coordinates"
             if args.a_sparse_radius_km else "disabled; all receptor batches"
         ),
         "calpuff_domain": _domain_contract(args.calpuff_domain),
+        "b0_file": f"B0/{_b0_filename(args)}",
         "outputs": {"b0": "B0", "a": "A"},
     }
     (output / "matrix_contract.json").write_text(json.dumps(contract, indent=2), encoding="utf-8")
 
     if args.mode in {"b0", "all"}:
-        _run_b0(args, paths, factory, receptor_batches, region_ids, output / "B0", start_utc)
+        _run_b0(
+            args,
+            paths,
+            factory,
+            receptor_batches,
+            region_ids,
+            output / "B0",
+            start_utc,
+            ppb_factors,
+        )
     if args.mode in {"a", "all"}:
         assert weather is not None
         _run_a(
@@ -204,6 +251,7 @@ def main(argv: list[str] | None = None) -> int:
             weather,
             output / "A",
             start_utc,
+            ppb_factors,
         )
     return 0
 
@@ -213,6 +261,7 @@ def _apply_case_config(args: argparse.Namespace, payload: dict[str, object]) -> 
     paths = mapping_value(payload, "paths")
     model = mapping_value(payload, "model")
     time = mapping_value(payload, "time")
+    concentration = mapping_value(payload, "concentration")
 
     defaults: dict[str, Path | None] = {
         "case_root": CASE_ROOT,
@@ -237,12 +286,35 @@ def _apply_case_config(args: argparse.Namespace, payload: dict[str, object]) -> 
     args.a_hours = args.a_hours if args.a_hours is not None else args.hours - args.a_start_hour
     if args.a_sparse_radius_km is None:
         args.a_sparse_radius_km = float(model.get("a_sparse_radius_km", 150.0))
+    if getattr(args, "concentration_unit", None) is None:
+        args.concentration_unit = str(concentration.get("output_unit", "g_m3"))
+    if getattr(args, "molecular_weight_g_mol", None) is None:
+        args.molecular_weight_g_mol = float(
+            concentration.get("molecular_weight_g_mol", DEFAULT_NO2_MOLECULAR_WEIGHT_G_MOL)
+        )
+    args.tracer_species = str(concentration.get("tracer_species", "passive_gas_tracer"))
     args.case_id = str(payload.get("case_id") or Path(args.case_root).name)
     args.calpuff_domain = CalpuffDomain.from_mapping(mapping_value(payload, "calpuff_domain"))
 
 
 def _state_equation(hours: int) -> str:
     return f"c1 = B0 @ emitted_mass_lb; c[h+1] = A[h] @ c[h] for h=1..{hours - 1}"
+
+
+def _state_unit(args: argparse.Namespace) -> str:
+    if args.concentration_unit == "ppb":
+        return f"ppb {args.tracer_species} volume mixing ratio"
+    return "g/m3 mass concentration"
+
+
+def _b0_unit(args: argparse.Namespace) -> str:
+    if args.concentration_unit == "ppb":
+        return f"ppb {args.tracer_species} per lb emitted during [t0,t1)"
+    return "g/m3 per lb emitted during [t0,t1)"
+
+
+def _b0_filename(args: argparse.Namespace) -> str:
+    return "B0_ppb_per_lb.npz" if args.concentration_unit == "ppb" else "B0_g_m3_per_lb.npz"
 
 
 def _domain_contract(domain: CalpuffDomain) -> dict[str, object]:
@@ -303,16 +375,25 @@ def _default_weather_path(partition_dir: Path) -> Path:
     return candidates[0]
 
 
-def _load_weather(path: Path, region_ids: np.ndarray, hours: int) -> pd.DataFrame:
+def _load_weather(
+    path: Path,
+    region_ids: np.ndarray,
+    hours: int,
+    *,
+    require_ppb_endpoints: bool,
+) -> pd.DataFrame:
     if not path.exists():
         raise FileNotFoundError(path)
     weather = pd.read_csv(path)
     required = {"region_id", "hour_index", "boundary_layer_height_m"}
+    if require_ppb_endpoints:
+        required.update({"temperature_k", "pressure_pa"})
     missing = required - set(weather.columns)
     if missing:
         raise ValueError(f"weather table lacks columns: {sorted(missing)}")
     weather["region_id"] = weather["region_id"].astype(str)
-    expected = {(hour, region_id) for hour in range(hours) for region_id in region_ids}
+    endpoint_count = hours + 1 if require_ppb_endpoints else hours
+    expected = {(hour, region_id) for hour in range(endpoint_count) for region_id in region_ids}
     observed = set(zip(weather["hour_index"].astype(int), weather["region_id"]))
     if expected - observed:
         raise ValueError(f"weather table is missing {len(expected - observed)} region-hour values")
@@ -327,6 +408,7 @@ def _run_b0(
     region_ids: np.ndarray,
     output_dir: Path,
     start_utc: datetime,
+    ppb_factors: np.ndarray | None,
 ) -> None:
     inventory = pd.read_csv(paths["generators"]).reset_index(drop=True)
     required = {"generator_id", "facility_id", "site_no", "region_id", "lon", "lat", "stack_height"}
@@ -383,20 +465,26 @@ def _run_b0(
     rows, cols, values = [], [], []
     for source_index, target_values in responses.items():
         for target_index, value in target_values.items():
+            if ppb_factors is not None:
+                value *= float(ppb_factors[1, target_index])
             if value > 0.0:
                 rows.append(target_index)
                 cols.append(source_index)
                 values.append(value)
     matrix = csc_matrix((np.asarray(values, dtype=np.float32), (rows, cols)), shape=(len(region_ids), len(inventory)))
-    save_npz(output_dir / "B0_g_m3_per_lb.npz", matrix, compressed=True)
+    save_npz(output_dir / _b0_filename(args), matrix, compressed=True)
     (output_dir / "provenance.json").write_text(json.dumps({
         "matrix": "B0",
         "shape": list(matrix.shape),
-        "unit": "g/m3 per lb emitted during [t0,t1)",
+        "unit": _b0_unit(args),
         "time_start_utc": _iso(start_utc),
         "time_end_utc_exclusive": _iso(start_utc + pd.Timedelta(hours=1).to_pytimedelta()),
         "source_experiment": "1 lb/h from each generator represented by 16 equal-weight 15 m volume sources",
         "receptor_aggregation": "mean of 9 receptors per target region",
+        "concentration_unit": args.concentration_unit,
+        "tracer_species": args.tracer_species,
+        "molecular_weight_g_mol": float(args.molecular_weight_g_mol),
+        "ppb_conversion_target_hour_index": 1 if ppb_factors is not None else None,
         "uses_calpuff": True,
         "not_emulator": True,
         "nnz": int(matrix.nnz),
@@ -413,6 +501,7 @@ def _run_a(
     weather: pd.DataFrame,
     output_dir: Path,
     start_utc: datetime,
+    ppb_factors: np.ndarray | None,
 ) -> None:
     source_count = len(region_ids) if args.a_source_count is None else min(args.a_source_count, len(region_ids))
     area = region_index["area_m2"].to_numpy(float)
@@ -441,6 +530,11 @@ def _run_a(
         for source_index, target_values in responses.items():
             for target_index, value in target_values.items():
                 coefficient = value / (args.unit_concentration_ug_m3 * UG_TO_G)
+                if ppb_factors is not None:
+                    coefficient *= float(
+                        ppb_factors[hour_index + 1, target_index]
+                        / ppb_factors[hour_index, source_index]
+                    )
                 if coefficient > 0.0:
                     rows.append(target_index)
                     cols.append(source_index)
@@ -455,7 +549,7 @@ def _run_a(
             "nnz": int(matrix.nnz),
             "coefficient_max": float(matrix.data.max()) if matrix.nnz else 0.0,
             "column_count": source_count,
-            "unit": "dimensionless concentration-state transfer",
+            "unit": f"{_state_unit(args)} per {_state_unit(args)}",
         })
     (output_dir / "provenance.json").write_text(json.dumps({
         "matrix": "A",
@@ -463,6 +557,15 @@ def _run_a(
         "source_experiment": "unit regional concentration represented by equivalent one-hour CALPUFF volume-source mass release",
         "unit_concentration_ug_m3": args.unit_concentration_ug_m3,
         "mass_conversion": "M_lb = V_m3 * unit_concentration_ug_m3 * 1e-6 / 453.59237",
+        "concentration_unit": args.concentration_unit,
+        "state_unit": _state_unit(args),
+        "tracer_species": args.tracer_species,
+        "molecular_weight_g_mol": float(args.molecular_weight_g_mol),
+        "ppb_similarity_transform": (
+            "A_ppb[h] = D[h+1] @ A_g_m3[h] @ inverse(D[h]), "
+            "where D[h] is diagonal(ppb_per_g_m3 at state h)"
+            if ppb_factors is not None else None
+        ),
         "uses_calpuff": True,
         "not_emulator": True,
         "receptor_aggregation": "mean of 9 receptors per target region",

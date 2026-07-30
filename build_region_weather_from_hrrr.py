@@ -1,11 +1,13 @@
 """Create the A-matrix mixed-layer-height table directly from raw HRRR GRIB2.
 
 The official A_h experiment needs one boundary-layer height for every
-subregion and hour to convert unit concentration to an equivalent source mass.
-This script samples the ``HPBL:surface`` message in the selected HRRR files at
-an interior representative point of each GeoJSON subregion. It does not run or
-approximate a dispersion model; CALPUFF still receives meteorology through the
-separately generated CALMET.DAT file.
+subregion and interval to convert unit concentration to an equivalent source
+mass. Gas ppb output additionally needs temperature and pressure at every
+state endpoint. This script samples ``HPBL:surface``, ``TMP:2 m above ground``,
+and ``PRES:surface`` in the selected HRRR files at an interior representative
+point of each GeoJSON subregion. It does not run or approximate a dispersion
+model; CALPUFF still receives meteorology through the separately generated
+CALMET.DAT file.
 """
 
 from __future__ import annotations
@@ -19,6 +21,8 @@ from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
 from shapely.geometry import shape
+
+from concentration_units import DEFAULT_NO2_MOLECULAR_WEIGHT_G_MOL, ppb_per_g_m3
 
 
 ROOT = Path(__file__).resolve().parent
@@ -43,6 +47,12 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--start-hour", type=int, default=0)
     parser.add_argument("--hours", type=int, default=24)
     parser.add_argument("--wgrib2", type=Path, required=True)
+    parser.add_argument(
+        "--molecular-weight-g-mol",
+        type=float,
+        default=DEFAULT_NO2_MOLECULAR_WEIGHT_G_MOL,
+        help="Molecular weight used for the gas mass-concentration to ppb factor.",
+    )
     parser.add_argument("--batch-size", type=int, default=50)
     args = parser.parse_args(argv)
 
@@ -66,10 +76,15 @@ def main(argv: list[str] | None = None) -> int:
         if not grib.exists():
             raise FileNotFoundError(grib)
         heights = _sample_wgrib2(args.wgrib2, grib, "HPBL:surface", points, args.batch_size)
+        temperatures = _sample_wgrib2(args.wgrib2, grib, "TMP:2 m above ground", points, args.batch_size)
+        pressures = _sample_wgrib2(args.wgrib2, grib, "PRES:surface", points, args.batch_size)
         timestamp = cycle_start + timedelta(hours=forecast_hour)
-        for (region_id, lon, lat), height in zip(points, heights, strict=True):
+        for (region_id, lon, lat), height, temperature_k, pressure_pa in zip(
+            points, heights, temperatures, pressures, strict=True
+        ):
             if height <= 0:
                 raise ValueError(f"HPBL must be positive for {region_id} at hour {hour_index}: {height}")
+            factor = float(ppb_per_g_m3(temperature_k, pressure_pa, args.molecular_weight_g_mol))
             rows.append(
                 {
                     "region_id": region_id,
@@ -78,9 +93,12 @@ def main(argv: list[str] | None = None) -> int:
                     "centroid_lon": lon,
                     "centroid_lat": lat,
                     "boundary_layer_height_m": height,
+                    "temperature_k": temperature_k,
+                    "pressure_pa": pressure_pa,
+                    "ppb_per_g_m3": factor,
                 }
             )
-        print(f"f{forecast_hour:02d}: sampled HPBL at {len(points)} subregions")
+        print(f"f{forecast_hour:02d}: sampled HPBL, temperature, and pressure at {len(points)} subregions")
 
     args.output.parent.mkdir(parents=True, exist_ok=True)
     with args.output.open("w", newline="", encoding="utf-8") as handle:
@@ -88,13 +106,15 @@ def main(argv: list[str] | None = None) -> int:
         writer.writeheader()
         writer.writerows(rows)
     provenance = {
-        "method": "wgrib2 -lon sampling of HPBL:surface at GeoJSON representative points",
+        "method": "wgrib2 -lon sampling of HPBL:surface, TMP:2 m above ground, and PRES:surface at GeoJSON representative points",
         "subregions": str(args.subregions),
         "grib_dir": str(args.grib_dir),
         "date": args.date,
         "cycle_utc": args.cycle,
         "start_forecast_hour": args.start_hour,
         "hours": args.hours,
+        "molecular_weight_g_mol": args.molecular_weight_g_mol,
+        "ppb_conversion": "ppb_per_g_m3 = R * temperature_k * 1e9 / (pressure_pa * molecular_weight_g_mol)",
         "region_count": len(points),
         "wgrib2": str(args.wgrib2),
     }

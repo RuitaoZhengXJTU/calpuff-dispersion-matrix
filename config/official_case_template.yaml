@@ -22,7 +22,9 @@ paths:
   region_index: official_calpuff/example_city_20260101_00z/inputs/matrix_region_index.csv
   # One row per modeled data center/generator; format is documented in the guide.
   generators: data/example_city_data_centers.csv
-  # One row per (region_id, hour_index), used only for the A-state volume conversion.
+  # One row per (region_id, hour_index). For ppb output this file must cover
+  # endpoint indices 0..hours inclusive: PBLH is used for A source masses and
+  # temperature/pressure convert CALPOST g/m3 responses to ppb.
   weather: data/processed/example_city_20260101_00z/weather_by_region_hour.csv
   # Must be produced for exactly this grid/projection and cover the full time window.
   calmet_dat: official_calpuff/example_city_20260101_00z/met/CALMET.DAT
@@ -32,6 +34,13 @@ model:
   # 0 retains all target receptors. A positive value is a documented geometric
   # sparse approximation in the projected coordinate system below.
   a_sparse_radius_km: 150.0
+
+concentration:
+  # Set ppb only for a gaseous tracer. Particulate matter should use g_m3 (or
+  # be converted downstream to ug/m3), because ppb is a volume mixing ratio.
+  output_unit: ppb
+  tracer_species: NO2_equivalent_passive_tracer
+  molecular_weight_g_mol: 46.0055
 
 # These example LCC values are placeholders. Replace the entire block with
 # values that exactly match the new CALMET.DAT meteorological grid.

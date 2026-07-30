@@ -30,6 +30,11 @@ def main() -> int:
     parser.add_argument("--hours", type=int, default=24)
     parser.add_argument("--output-dir", type=Path, default=DEFAULT_OUTPUT)
     parser.add_argument("--base-url", default=DEFAULT_BASE)
+    parser.add_argument(
+        "--force",
+        action="store_true",
+        help="redownload selected GRIB2 files that already exist",
+    )
     parser.add_argument("--dry-run", action="store_true")
     args = parser.parse_args()
     if not 0 <= args.cycle <= 23:
@@ -77,7 +82,8 @@ def main() -> int:
         }
         if not args.dry_run:
             subset_path = args.output_dir / f"{filename}.selected.grib2"
-            _download_ranges(url, selected, source_size, subset_path)
+            if not subset_path.exists() or args.force:
+                _download_ranges(url, selected, source_size, subset_path)
             record["subset_path"] = str(subset_path)
             record["subset_size_bytes"] = subset_path.stat().st_size
             record["subset_sha256"] = _sha256(subset_path)

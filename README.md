@@ -19,6 +19,14 @@ regions or generators. The repository's default physical settings are fixed:
 one-hour passive tracer releases, 15 m volume-source height, no chemistry, no
 dry/wet deposition, and no decay.
 
+The default output state is a gaseous, passive NO2-equivalent volume mixing
+ratio in **ppb**. CALPUFF/CALPOST first produces mass concentration in g/m3;
+the workflow applies the ideal-gas conversion using local HRRR 2 m temperature
+and surface pressure. This is appropriate for a gas with molecular weight
+46.0055 g/mol, not for PM2.5. A particulate-matter study must set
+`concentration.output_unit: g_m3` and retain mass-concentration units (or
+convert g/m3 to ug/m3 downstream).
+
 The repository does **not** include solved matrices, CALPUFF executables, or
 generated CALMET/CALPUFF case files. Those are regenerated locally. The
 official output directory is configured by the case YAML and is ignored by
@@ -41,7 +49,7 @@ starts by copying `config/official_case_template.yaml`.
 
 | Input class | Included DC/MD/VA path | Required structure | Replace for a new study |
 |---|---|---|---|
-| Time and CALPUFF domain | `config/official_case_20250623_18z.yaml` | YAML with `time`, `paths`, `model`, `calpuff_domain`, and `meteorology` blocks | Edit `time.start_utc`, `time.hours`, all relevant `paths`, and every grid/projection field in `calpuff_domain` so they match the new CALMET grid. |
+| Time, units, and CALPUFF domain | `config/official_case_20250623_18z.yaml` | YAML with `time`, `paths`, `model`, `concentration`, `calpuff_domain`, and `meteorology` blocks | Edit `time.start_utc`, `time.hours`, `concentration`, all relevant `paths`, and every grid/projection field in `calpuff_domain` so they match the new CALMET grid. |
 | Subregional partition | `population_partitions/area_capped_30sqmi_population_balanced/subregions.geojson` | WGS84 GeoJSON FeatureCollection; every Polygon/MultiPolygon has unique `properties.region_id`; `area_m2` is recommended | Replace `subregions.geojson` and set `paths.partition_dir`. The preparer creates the matrix order, sources, receptors, and receptor batches. |
 | Generator inventory | `data/data_centers_example.csv` | UTF-8 CSV with `generator_id,facility_id,site_no,region_id,lon,lat,stack_height` | Replace `paths.generators`. `generator_id` must be unique; `region_id` must match a partition feature; `lon,lat` are WGS84. Set `stack_height` to `15` for the repository's fixed source assumption. |
 | Meteorology and CALMET sampling input | `data/raw/hrrr_20250623_18z/`, `data/raw/hrrr_20250623_00z_spinup/`, and `data/inputs/dc_va_md_20250623_18z/surrogate_surface_stations.csv` | Selected NOAA HRRR GRIB2 messages plus `.idx` inventories; station CSV has `station_index,station_id,name,lon,lat` and exactly nine rows for the included HRRR-to-CALMET route | Download selected HRRR messages for the new cycle/window, provide a station CSV for the new domain, and create a CALMET file matching `calpuff_domain`. |
@@ -86,6 +94,26 @@ The raw-HRRR commands in Section 3 reproduce the included DC/MD/VA
 encodes that grid and its nine-station design. For another domain, generate a
 matching `CALMET.DAT` with WRF-ARW/MMIF/CALMET or modify that builder's grid,
 terrain, station, and control settings before running CALPUFF.
+
+### Concentration-unit configuration
+
+The `concentration` block specifies the final matrix state unit. The supplied
+case uses:
+
+```yaml
+concentration:
+  output_unit: ppb
+  tracer_species: NO2_equivalent_passive_tracer
+  molecular_weight_g_mol: 46.0055
+```
+
+For every region i and state endpoint h, the workflow forms
+`d[i,h] = R * T[i,h] * 1e9 / (P[i,h] * MW)`, in ppb per g/m3. It writes
+`B0_ppb = D[1] @ B0_g_m3` and
+`A_ppb[h] = D[h+1] @ A_g_m3[h] @ inverse(D[h])`. Therefore B0 has unit
+`ppb per lb emitted during [t0,t1)`, while every `A[h]` maps ppb to ppb. The
+weather table must include endpoint rows `0` through `H` inclusive. Do not set
+`output_unit: ppb` for PM2.5 or another particulate species.
 
 ## 2. Software and environment variables
 
@@ -142,7 +170,7 @@ fields used by the included route.
 
 ```powershell
 python fetch_hrrr_selected_messages.py `
-  --date 20250623 --cycle 18 --start-hour 0 --hours 24 `
+  --date 20250623 --cycle 18 --start-hour 0 --hours 25 `
   --output-dir data\raw\hrrr_20250623_18z
 
 python fetch_hrrr_selected_messages.py `
@@ -160,14 +188,16 @@ python prepare_official_sparse_calpuff.py `
   --calpuff-seed $env:CALPUFF_SEED
 ```
 
-Create the region/hour boundary-layer-height table used to convert the unit
-concentration state to one-hour source mass for `A[h]`:
+Create the regional weather table used to convert the unit concentration state
+to one-hour source mass for `A[h]` and to convert gaseous CALPOST g/m3 outputs
+to ppb. Request 25 HRRR files for a 24-hour horizon, because ppb conversion
+needs endpoints 0 through 24:
 
 ```powershell
 python build_region_weather_from_hrrr.py `
   --grib-dir data\raw\hrrr_20250623_18z `
   --subregions population_partitions\area_capped_30sqmi_population_balanced\subregions.geojson `
-  --date 20250623 --cycle 18 --start-hour 0 --hours 24 `
+  --date 20250623 --cycle 18 --start-hour 0 --hours 25 `
   --wgrib2 $env:WGRIB2_EXE `
   --output data\processed\hrrr_region_weather_20250623_18z\weather_by_region_hour.csv
 ```
@@ -240,19 +270,36 @@ python run_official_ab_matrices.py `
   --case-config config\official_case_20250623_18z.yaml `
   --mode a --max-workers 1 --continue-on-error --resume
 
-python validate_official_ab.py --output-root outputs\official_ab_20250623_18z
+python validate_official_ab.py --output-root outputs\official_ab_20250623_18z_ppb
 ```
 
 The expected final files are:
 
 ```text
-outputs/official_ab_20250623_18z/
+outputs/official_ab_20250623_18z_ppb/
   matrix_contract.json
-  B0/B0_g_m3_per_lb.npz
+  B0/B0_ppb_per_lb.npz
   B0/generator_columns.csv
   A/hour_01.npz ... A/hour_23.npz
   validation_report.json
 ```
+
+To convert an existing completed official passive-gas package that was stored
+in g/m3, generate the required 25-row-per-region weather table first and run:
+
+```powershell
+python convert_official_ab_to_ppb.py `
+  --input-root <existing-g-m3-package> `
+  --output-root <new-ppb-package> `
+  --region-index official_calpuff\case_20250623_18z_30sqmi\inputs\matrix_region_index.csv `
+  --weather data\processed\hrrr_region_weather_20250623_18z\weather_by_region_hour.csv `
+  --molecular-weight-g-mol 46.0055
+
+python validate_official_ab.py --output-root <new-ppb-package>
+```
+
+This post-processing route is a unit transformation of the completed official
+CALPUFF response, not an emulator and not a new atmospheric simulation.
 
 On Windows, use `--max-workers 1`. CALPUFF 7.2.1 can contend for temporary
 files when cases run concurrently. If a run stops, repeat the same command

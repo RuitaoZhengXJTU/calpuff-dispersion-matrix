@@ -35,6 +35,9 @@ def test_portable_case_config_applies_paths_time_and_domain() -> None:
     assert args.start_utc == "2025-06-23T18:00:00Z"
     assert args.hours == 24
     assert args.a_hours == 23
+    assert args.concentration_unit == "ppb"
+    assert args.molecular_weight_g_mol == 46.0055
+    assert args.tracer_species == "NO2_equivalent_passive_tracer"
     assert args.partition_dir.name == "area_capped_30sqmi_population_balanced"
     assert args.calpuff_domain.nx == 79
     assert args.calpuff_domain.projected_crs.startswith("+proj=lcc")

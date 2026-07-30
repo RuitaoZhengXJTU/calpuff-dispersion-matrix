@@ -56,7 +56,7 @@ def main(argv: list[str] | None = None) -> int:
     if contract.get("state_equation") != expected_equation:
         errors.append("matrix_contract.json has an unexpected state equation")
 
-    b0_path = root / "B0" / "B0_g_m3_per_lb.npz"
+    b0_path = root / str(contract.get("b0_file", "B0/B0_g_m3_per_lb.npz"))
     if b0_path.exists():
         b0 = load_npz(b0_path).tocsc()
         expected_b0_shape = (n_regions, n_generators)
