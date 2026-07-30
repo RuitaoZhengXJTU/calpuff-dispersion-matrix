@@ -1,5 +1,5 @@
-# Portable official CALPUFF A/B case manifest.
-# Paths are relative to the repository root. Copy this file for each study.
+# Deprecated compatibility template. Use ../configs/case_template.yaml.
+extends: ../configs/case_template.yaml
 #
 # The runner creates B0 (generator emissions -> c_1) and A[1] ... A[hours-1]
 # (regional concentration states). It does not use the legacy emulator.

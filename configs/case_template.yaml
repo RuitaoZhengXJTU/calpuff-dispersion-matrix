@@ -1,0 +1,71 @@
+# Copy this file and replace every study-specific placeholder. Relative paths
+# are always resolved against the repository root, not this YAML's directory.
+case_id: example_city_20260101_00z
+
+time:
+  start_utc: "2026-01-01T00:00:00Z"
+  hours: 24
+
+hrrr:
+  main_window:
+    date: "20260101"
+    cycle_utc: 0
+    start_hour: 0
+    # Use hours + 1 for ppb endpoints 0 through H.
+    hours: 25
+  spinup_window:
+    date: "20251231"
+    cycle_utc: 12
+    start_hour: 12
+    hours: 12
+
+paths:
+  case_root: official_calpuff/example_city_20260101_00z
+  partition_dir: inputs/example_city/partition
+  subregions: inputs/example_city/partition/subregions.geojson
+  sources: official_calpuff/example_city_20260101_00z/inputs/sources_16_per_region.csv
+  receptors: official_calpuff/example_city_20260101_00z/inputs/receptors_9_per_region.csv
+  receptor_batch_dir: official_calpuff/example_city_20260101_00z/inputs/receptor_batches
+  region_index: official_calpuff/example_city_20260101_00z/inputs/matrix_region_index.csv
+  generators: inputs/example_city/generators.csv
+  stations: inputs/example_city/stations.csv
+  hrrr_main_raw_dir: data/raw/example_city_20260101_00z
+  hrrr_spinup_raw_dir: data/raw/example_city_20251231_12z_spinup
+  hrrr_main_manifest: data/manifests/example_city_20260101_00z.json
+  hrrr_spinup_manifest: data/manifests/example_city_20251231_12z_spinup.json
+  station_met_main: data/processed/example_city_20260101_00z/stations
+  station_met_spinup: data/processed/example_city_20251231_12z_spinup/stations
+  weather: data/processed/example_city_20260101_00z/weather_by_region_hour.csv
+  calmet_dir: official_calpuff/example_city_20260101_00z/met/calmet
+  calmet_dat: official_calpuff/example_city_20260101_00z/met/calmet/CALMET.DAT
+  output_root: outputs/official_ab_example_city_20260101_00z_ppb
+
+model:
+  a_sparse_radius_km: 150.0
+
+concentration:
+  output_unit: ppb
+  tracer_species: NO2_equivalent_passive_tracer
+  molecular_weight_g_mol: 46.0055
+
+# Replace this entire block with the exact CALMET grid/projection.
+calpuff_domain:
+  projected_crs: "+proj=lcc +lat_1=33 +lat_2=39.5 +lat_0=37 +lon_0=-77.5 +datum=WGS84 +units=m +no_defs"
+  pmap: LCC
+  datum: WGS-84
+  feast_km: 0.0
+  fnorth_km: 0.0
+  rlat0: N37.0
+  rlon0: W77.5
+  xlat1: N33.0
+  xlat2: N39.5
+  nx: 79
+  ny: 38
+  nz: 10
+  zface_m: [0.0, 20.0, 40.0, 80.0, 160.0, 320.0, 640.0, 1200.0, 2000.0, 3000.0, 4000.0]
+  dgrid_km: 10.0
+  xorig_km: -560.0
+  yorig_km: -60.0
+
+meteorology:
+  mmif_grid_ll: null
