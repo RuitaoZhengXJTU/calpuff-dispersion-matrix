@@ -69,11 +69,10 @@ def main() -> int:
         if not selected:
             raise RuntimeError(f"no required GRIB2 messages found in {idx_path}")
         record: dict[str, object] = {
-            "output_hour_index": offset_hour,
             "forecast_hour": forecast_hour,
             "filename": filename,
             "source_url": url,
-            "index_path": str(idx_path),
+            "index_path": idx_path.as_posix(),
             "source_size_bytes": source_size,
             "selected_messages": [
                 {"line": item["line"], "offset": item["offset"], "description": item["description"]}
@@ -84,7 +83,7 @@ def main() -> int:
             subset_path = args.output_dir / f"{filename}.selected.grib2"
             if not subset_path.exists() or args.force:
                 _download_ranges(url, selected, source_size, subset_path)
-            record["subset_path"] = str(subset_path)
+            record["subset_path"] = subset_path.as_posix()
             record["subset_size_bytes"] = subset_path.stat().st_size
             record["subset_sha256"] = _sha256(subset_path)
         selected_records.append(record)
@@ -95,7 +94,6 @@ def main() -> int:
         "method": "NOAA HRRR AWS byte-range extraction using GRIB2 index files",
         "date": args.date,
         "cycle_utc": args.cycle,
-        "start_forecast_hour": args.start_hour,
         "forecast_hours": args.hours,
         "base_url": args.base_url,
         "selection": {

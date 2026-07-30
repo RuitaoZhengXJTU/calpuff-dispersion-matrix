@@ -291,7 +291,7 @@ in g/m3, generate the required 25-row-per-region weather table first and run:
 python convert_official_ab_to_ppb.py `
   --input-root <existing-g-m3-package> `
   --output-root <new-ppb-package> `
-  --region-index official_calpuff\case_20250623_18z_30sqmi\inputs\matrix_region_index.csv `
+  --region-index population_partitions\area_capped_30sqmi_population_balanced\region_partition_index_30sqmi_population_balanced.csv `
   --weather data\processed\hrrr_region_weather_20250623_18z\weather_by_region_hour.csv `
   --molecular-weight-g-mol 46.0055
 
