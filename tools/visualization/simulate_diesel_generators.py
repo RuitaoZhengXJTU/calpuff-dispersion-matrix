@@ -13,7 +13,7 @@ from matplotlib.patches import Polygon as MplPolygon
 from shapely.geometry import Point, shape
 
 
-ROOT = Path(__file__).resolve().parent
+ROOT = Path(__file__).resolve().parents[2]
 CASE_TAG = "20250623_18z"
 
 

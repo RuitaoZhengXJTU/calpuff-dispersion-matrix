@@ -14,7 +14,7 @@ from shapely.geometry import shape
 from shapely.ops import unary_union
 
 
-ROOT = Path(__file__).resolve().parent
+ROOT = Path(__file__).resolve().parents[2]
 FONT_FAMILY = "Times New Roman"
 DETAIL_EXTENT = (-77.90, -76.95, 38.60, 39.20)
 
@@ -45,7 +45,7 @@ def main() -> int:
     )
     parser.add_argument(
         "--data-centers",
-        default="data/data_centers_example.csv",
+        default="data/examples/dc_md_va_20250623/generators.csv",
     )
     parser.add_argument("--dpi", type=int, default=400)
     args = parser.parse_args()
@@ -53,9 +53,10 @@ def main() -> int:
     partition_dir = _resolve(args.partition_dir)
     output = _resolve(args.output)
     data_centers_path = _resolve(args.data_centers)
-    payload = json.loads((partition_dir / "subregions_simplified.geojson").read_text(encoding="utf-8"))
-    validation = json.loads((partition_dir / "validation.json").read_text(encoding="utf-8"))
-
+    geojson = partition_dir / "subregions_simplified.geojson"
+    if not geojson.exists():
+        geojson = partition_dir / "subregions.geojson"
+    payload = json.loads(geojson.read_text(encoding="utf-8"))
     geoms = [shape(feature["geometry"]) for feature in payload["features"]]
     fills, interior_lines = _geometry_artists(geoms)
     outline_lines = _outline_artists(unary_union(geoms))

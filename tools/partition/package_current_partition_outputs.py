@@ -10,7 +10,7 @@ import pandas as pd
 from scipy.sparse import load_npz
 
 
-ROOT = Path(__file__).resolve().parent
+ROOT = Path(__file__).resolve().parents[2]
 CASE_TAG = "20250623_18z"
 
 

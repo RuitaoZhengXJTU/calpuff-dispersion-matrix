@@ -15,8 +15,8 @@ from urllib.request import urlretrieve
 import pandas as pd
 import requests
 
-ROOT = Path(__file__).resolve().parent
-sys.path.insert(0, str(ROOT / "src"))
+ROOT = Path(__file__).resolve().parents[2]
+sys.path.insert(0, str(ROOT / "archive" / "legacy_emulator"))
 
 from transfer_matrix.config import load_case
 from transfer_matrix.grid import _projection_string, _require_geo_stack, _sample_points

@@ -15,10 +15,10 @@ from matplotlib.collections import PatchCollection
 from matplotlib.patches import Polygon as MplPolygon
 from shapely.geometry import shape
 
-ROOT = Path(__file__).resolve().parent
+ROOT = Path(__file__).resolve().parents[2]
 sys.path.insert(0, str(ROOT))
 
-from simulate_diesel_generators import (
+from tools.visualization.simulate_diesel_generators import (
     GENERATOR_SITES,
     _build_initial_vector,
     _load_features,
