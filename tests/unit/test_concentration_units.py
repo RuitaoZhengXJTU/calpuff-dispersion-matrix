@@ -3,7 +3,7 @@ from __future__ import annotations
 import numpy as np
 import pandas as pd
 
-from concentration_units import ppb_factor_array, ppb_per_g_m3
+from calpuff_matrix.units import ppb_factor_array, ppb_per_g_m3
 
 
 def test_no2_mass_concentration_to_ppb_uses_ideal_gas_relation() -> None:

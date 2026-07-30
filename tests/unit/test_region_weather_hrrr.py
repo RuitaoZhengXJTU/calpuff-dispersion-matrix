@@ -3,7 +3,7 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
-from build_region_weather_from_hrrr import _representative_points
+from calpuff_matrix.weather import _representative_points
 
 
 def test_representative_points_are_stable_and_require_unique_ids(tmp_path: Path) -> None:

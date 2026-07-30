@@ -3,8 +3,8 @@ from __future__ import annotations
 import argparse
 from pathlib import Path
 
-from official_case_config import load_case_config
-from run_official_ab_matrices import _apply_case_config, _state_equation
+from calpuff_matrix.config import load_case_config
+from calpuff_matrix.matrices import _apply_case_config, _state_equation
 
 
 def test_portable_case_config_applies_paths_time_and_domain() -> None:

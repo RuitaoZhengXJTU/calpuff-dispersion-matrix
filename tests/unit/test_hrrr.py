@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from fetch_hrrr_selected_messages import hrrr_surface_url
+from calpuff_matrix.hrrr import hrrr_surface_url
 
 
 def test_hrrr_surface_url() -> None:

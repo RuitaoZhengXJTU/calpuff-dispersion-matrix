@@ -2,7 +2,7 @@ from pathlib import Path
 
 import pandas as pd
 
-from parse_calpost_tseries import parse_calpost_tseries
+from calpuff_matrix.calpost import parse_calpost_tseries
 
 
 def test_parse_calpost_tseries_preserves_manifest_order(tmp_path: Path) -> None:

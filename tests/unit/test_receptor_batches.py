@@ -5,7 +5,7 @@ from pathlib import Path
 
 import pandas as pd
 
-from prepare_official_sparse_calpuff import _write_case_inputs, _write_receptor_batches
+from calpuff_matrix.preparation import _write_case_inputs, _write_receptor_batches
 
 
 def test_receptor_batches_keep_regions_intact(tmp_path: Path) -> None:

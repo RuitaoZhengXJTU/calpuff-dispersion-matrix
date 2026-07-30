@@ -7,8 +7,8 @@ import numpy as np
 import pandas as pd
 from scipy.sparse import csc_matrix, load_npz, save_npz
 
-from concentration_units import ppb_factor_array
-from convert_official_ab_to_ppb import main
+from calpuff_matrix.units import ppb_factor_array
+from calpuff_matrix.conversion import main
 
 
 def test_converter_applies_endpoint_diagonal_transforms(tmp_path: Path) -> None:
@@ -53,3 +53,6 @@ def test_converter_applies_endpoint_diagonal_transforms(tmp_path: Path) -> None:
     expected_a1 = np.diag(factors[2]) @ a1.toarray() @ np.diag(1.0 / factors[1])
     assert np.allclose(load_npz(output / "B0" / "B0_ppb_per_lb.npz").toarray(), expected_b0)
     assert np.allclose(load_npz(output / "A" / "hour_01.npz").toarray(), expected_a1)
+    converted_contract = json.loads((output / "matrix_contract.json").read_text(encoding="utf-8"))
+    assert converted_contract["concentration_unit"] == "ppb"
+    assert converted_contract["b0_file"] == "B0/B0_ppb_per_lb.npz"

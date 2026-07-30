@@ -4,7 +4,7 @@ from pathlib import Path
 import numpy as np
 from scipy.sparse import csc_matrix, save_npz
 
-from validate_official_ab import main
+from calpuff_matrix.validation import main
 
 
 def _write_package(root: Path, a_hours: range) -> None:
